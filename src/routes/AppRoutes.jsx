@@ -1,0 +1,31 @@
+import { Routes, Route } from "react-router";
+
+import Login from "../features/auth/pages/LoginPage";
+import Dashboard from "../features/dashboard/pages/Dashboard";
+import Products from "../features/products/pages/Products";
+import Orders from "../features/orders/pages/Orders";
+import Users from "../features/users/pages/Users";
+
+import DashboardLayout from "../components/layout/DashboardLayout";
+import ProtectedRoute from "./ProtectedRoute";
+
+export default function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+
+      <Route
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/users" element={<Users />} />
+      </Route>
+    </Routes>
+  );
+}
