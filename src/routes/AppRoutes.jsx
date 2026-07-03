@@ -1,5 +1,4 @@
-import { Routes, Route,Navigate
- } from "react-router";
+import { Routes, Route, Navigate } from "react-router";
 
 import Login from "../features/auth/pages/LoginPage";
 import Dashboard from "../features/dashboard/pages/Dashboard";
