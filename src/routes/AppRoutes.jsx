@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router";
+import { Routes, Route,Navigate
+ } from "react-router";
 
 import Login from "../features/auth/pages/LoginPage";
 import Dashboard from "../features/dashboard/pages/Dashboard";
@@ -12,6 +13,7 @@ import ProtectedRoute from "./ProtectedRoute";
 export default function AppRoutes() {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<Login />} />
 
       <Route
