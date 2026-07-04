@@ -15,7 +15,7 @@ export default function DashboardLayout() {
       <div className="flex flex-1 flex-col">
         <Navbar />
 
-        <main className="flex-1 bg-amber-600 flex justify-center items-center">
+        <main className="flex-1 bg-amber-600 flex flex-col p-6">
           <Outlet />
         </main>
       </div>
