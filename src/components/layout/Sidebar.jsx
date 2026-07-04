@@ -1,21 +1,33 @@
-import React from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   return (
-    <ul className=" w-full p-5 flex flex-col gap-5  h-[50%]   justify-between">
+    <ul className="p-5 flex flex-col gap-4 text-white">
+
       <li>
-        <Link to="dashboard">Dashboard</Link>
+        <Link className="hover:text-blue-300" to="">
+          Dashboard
+        </Link>
       </li>
+
       <li>
-        <Link to="products">Products</Link>
+        <Link className="hover:text-blue-300" to="products">
+          Products
+        </Link>
       </li>
+
       <li>
-        <Link to="orders">Orders</Link>
+        <Link className="hover:text-blue-300" to="orders">
+          Orders
+        </Link>
       </li>
+
       <li>
-        <Link to="users">Users</Link>
+        <Link className="hover:text-blue-300" to="users">
+          Users
+        </Link>
       </li>
+
     </ul>
   );
 }
