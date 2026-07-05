@@ -1,9 +1,9 @@
 import React from "react";
-
+import UserManager from '../components/usermanagement';
 function Users() {
   return (
-    <div>
-      <h1>users</h1>
+    <div className="w-full h-full p-10">
+      <UserManager />
     </div>
   );
 }
