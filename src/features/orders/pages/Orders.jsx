@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 import { getAdminOrders, updateOrderStatus } from "../orders.service";
 
 const statusOptions = [
@@ -79,6 +80,8 @@ const [currentPage, setCurrentPage] = useState(1);
 const ordersPerPage = 14;
 
 const [isLoading, setIsLoading] = useState(true);
+const [isDetailsLoading, setIsDetailsLoading] = useState(false);
+
 
 const filteredOrders = orders.filter((order) => {
   const searchValue = searchTerm.toLowerCase();
@@ -113,6 +116,17 @@ const paginatedOrders = filteredOrders.slice(
 useEffect(() => {
   setCurrentPage(1);
 }, [searchTerm, statusFilter, paymentFilter, methodFilter]);
+
+const handleOpenOrder = (order) => {
+  setSelectedOrder(order);
+  setIsDetailsLoading(true);
+
+  setTimeout(() => {
+    setNewStatus(order.status);
+    setAdminNote(order.adminNote || "");
+    setIsDetailsLoading(false);
+  }, 500);
+};
 
 const handleUpdateStatus = async () => {
   try {
@@ -237,11 +251,8 @@ const handleUpdateStatus = async () => {
     paginatedOrders.map((order) => (
       <tr
         key={order._id}
-        onClick={() => {
-          setSelectedOrder(order);
-          setNewStatus(order.status);
-          setAdminNote(order.adminNote || "");
-        }}
+        onClick={() => handleOpenOrder(order)}
+
         className="border-t border-slate-100 cursor-pointer hover:bg-slate-50"
       >
         <td className="px-6 py-5 font-semibold text-slate-500 dark:text-slate-400">
@@ -367,34 +378,39 @@ const handleUpdateStatus = async () => {
 {selectedOrder && (
   <div
     onClick={() => setSelectedOrder(null)}
-    className="fixed inset-0 bg-black/40 flex justify-end z-50"
+    className="fixed inset-0 bg-black/40 flex justify-end z-50 text-sm"
   >
     <div
       onClick={(e) => e.stopPropagation()}
-      className="h-full w-full overflow-y-auto bg-white p-4 sm:w-[520px] sm:p-6"
+      className="h-full w-full overflow-y-auto bg-white p-4 sm:w-[500px] sm:p-6"
     >
-      <div className="flex justify-between items-start mb-6">
+      <div className="flex justify-between items-start text-sm mb-5">
         <div>
-          <p className="text-xs tracking-[0.25em] text-slate-400 font-semibold">
+          <p className="text-xs tracking-[0.13em] text-slate-400 font-semibold">
             ORDER DETAIL
           </p>
           <h2 className="font-bold text-slate-900">
             #{selectedOrder._id.slice(-8).toUpperCase()}
           </h2>
         </div>
-
         <button
-          onClick={() => setSelectedOrder(null)}
-          className="text-2xl text-slate-400"
-        >
-          ×
-        </button>
+  onClick={() => setSelectedOrder(null)}
+  className="text-slate-400 hover:text-slate-600 transition"
+>
+  <FiX size={24} />
+</button>
       </div>
 
       <hr className="border-slate-200 my-6" />
+{isDetailsLoading ? (
+  <div className="flex h-[70vh] items-center justify-center">
+    <div className="h-8 w-8 animate-spin rounded-full border-2 border-slate-300 border-t-slate-900"></div>
+  </div>
+) : (
+  <>
+      
 
-      <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-
+  <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
   <div className="flex gap-3">
 
     <span
@@ -410,7 +426,7 @@ const handleUpdateStatus = async () => {
     <span
       className={`inline-flex items-center rounded-md px-4 py-1.5 text-xs font-bold uppercase ${
         selectedOrder.paymentStatus === "pending"
-          ? "bg-yellow-100 text-yellow-700"
+          ? "bg-amber-100 text-amber-700"
           : selectedOrder.paymentStatus === "paid"
           ? "bg-green-100 text-green-700"
           : "bg-red-100 text-red-700"
@@ -606,6 +622,8 @@ const handleUpdateStatus = async () => {
 </button>
         </div>
       </div>
+      </>
+  )}
     </div>
   </div>
 )}
