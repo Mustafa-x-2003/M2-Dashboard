@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AddUserForm from './adduser';
 import { FaSearch, FaUserPlus, FaChevronDown } from 'react-icons/fa';
 const UserManager = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   return (
+    <div className="space-y-6">
     <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-xl">
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div>
@@ -14,13 +17,16 @@ const UserManager = () => {
             <input type="text" placeholder="Search users..." 
               className="w-full py-3 pl-12 pr-4 rounded-2xl border bg-gray-100 border-slate-200 outline-none focus:ring-2 focus:ring-cyan-500"/>
           </div>
-          <button className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 active:scale-95 transition text-white px-6 py-3 rounded-2xl font-semibold shadow-md cursor-pointer">
+           <button onClick={() => setIsFormOpen(!isFormOpen)} className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 active:scale-95 transition text-white px-6 py-3 rounded-2xl font-semibold shadow-md cursor-pointer">
             <FaUserPlus /> 
             <span>Add User</span>
-            <FaChevronDown className="text-sm opacity-80" />
+            <FaChevronDown className={`transition-transform duration-300 ${isFormOpen ? 'rotate-180' : ''}`} />
           </button>
         </div>
+
       </div>
+    </div>
+    {isFormOpen && ( <AddUserForm onClose={() => setIsFormOpen(false)} />)}
     </div>
   );
 };
