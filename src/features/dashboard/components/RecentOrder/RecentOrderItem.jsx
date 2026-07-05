@@ -27,7 +27,7 @@ const RecentOrderItem =({order})=>{
     // ******************************************************************************************************************************
     return(
         <>
-            <div className="md:flex md:flex-row md:items-center md:justify-between flex-col  shadow-sm  border border-red-100 w-full  items-center p-4 mt-4 space-y-3 bg-gray-100 rounded-3xl ">
+            <div className="md:flex md:flex-row md:items-center md:justify-between flex-col  shadow-sm  border border-red-100 w-full  items-center p-4 mb-4  bg-gray-100 rounded-3xl ">
                 
                 <div className=" ">
                     <h2 className="text-base font-semibold  text-slate-900 md:text-lg ">{order.user?.username || "Unknown User"}</h2>
