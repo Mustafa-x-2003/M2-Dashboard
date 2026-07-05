@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaUserPlus } from 'react-icons/fa';
 import { toast, Toaster } from 'react-hot-toast';
+import { addUser } from '../services/addUser';
 const AddUserForm = ({ onClose }) => {
   const placeholders = {
   username: 'e.g. abdallah',
@@ -21,12 +22,20 @@ const AddUserForm = ({ onClose }) => {
   const handleClear = () => {
     setFormData({ username: '', email: '', password: '', phone: '' });
   };
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
   if (!formData.username || !formData.email || !formData.password) {
     toast.error("Username, email and password are required");
     return;
   }
-  toast.success("User created successfully!");
+  try {
+    await addUser(formData); 
+      toast.success("User added successfully!");
+      setTimeout(() => {
+        onClose();
+      }, 1500);
+  } catch (error) {
+    toast.error(error.message || "Something went wrong!");
+  }
 };
   return (
     <div><Toaster position="top-right" />
