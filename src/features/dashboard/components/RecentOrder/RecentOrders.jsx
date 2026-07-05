@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import RecentOrderItem from "./RecentOrderItem";
 import { getDashboard } from "../../services/dashboardApi";
 
-const RecentOrder = ({ dashboard })=>{
+const RecentOrders = ({ dashboard })=>{
 
     const orders = dashboard?.recentOrders || [];
     return(
         <>
-            <section className="rounded-2xl border border-gray-200 bg-white py-3 px-6 shadow-lg w-full min-h-[517px] shadow-lg">
+            <section className="rounded-2xl border border-gray-200 bg-white py-3 px-6  w-full   shadow-lg">
                 <div className=" flex justify-between items-center ">
                     <div>
                         <h5 className="md:tracking-[6px] uppercase text-cyan-400 mt-2 md:text-xl text-sm ">Recent orders</h5>
@@ -38,4 +38,4 @@ const RecentOrder = ({ dashboard })=>{
 
 }
 
-export default RecentOrder;
+export default RecentOrders;
