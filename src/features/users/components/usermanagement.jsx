@@ -26,7 +26,15 @@ const UserManager = () => {
 
       </div>
     </div>
-    {isFormOpen && ( <AddUserForm onClose={() => setIsFormOpen(false)} />)}
+       <div
+        className={`grid transition-all duration-400 ease-in-out ${
+          isFormOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        }`}
+      >
+        <div className="overflow-hidden">
+          <AddUserForm onClose={() => setIsFormOpen(false)} />
+        </div>
+      </div>
     </div>
   );
 };
