@@ -27,3 +27,11 @@ export const toggleUserRole = async (id, currentRole) => {
 
   return response.data;
 };
+
+export const deleteUser = async (id) => {
+  const response = await axiosInstance.delete(
+    ENDPOINTS.USER_BY_ID(id)
+  );
+
+  return response.data;
+};
