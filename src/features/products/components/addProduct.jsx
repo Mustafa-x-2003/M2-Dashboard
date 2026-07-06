@@ -1,17 +1,25 @@
-import { FaStore} from "react-icons/fa";
+import { FaStore } from "react-icons/fa";
+import { HiOutlinePlusSm } from "react-icons/hi";
 
-export default function AddProduct({addProduct}){
-    return(
-        <div className="mb-4 flex  justify-between">
-            <div className="flex items-center bg-gray-100 rounded-xl px-4 py-3 gap-2">
-                <FaStore className="text-gray-500 text-5xl"/>
+export default function AddProduct({ addProduct }) {
+    return (
+        <div className="mb-6 flex items-center justify-between bg-gradient-to-r from-cyan-50 to-teal-50 border border-teal-100 rounded-2xl px-6 py-5">
+            <div className="flex items-center gap-4">
+                <div className="bg-teal-100 text-teal-600 rounded-xl p-3">
+                    <FaStore className="text-2xl" />
+                </div>
                 <div>
-                    <p className="text-gray-500 text-2xl">DashBoard</p>
-                    <p className="text-xl">Products</p>
-                   
+                    <p className="text-xs font-semibold tracking-widest text-teal-500 uppercase">Product Dashboard</p>
+                    <h1 className="text-2xl font-bold text-gray-800">Products</h1>
                 </div>
             </div>
-            <button onClick={addProduct}>Add Product</button>
+            <button
+                onClick={addProduct}
+                className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 active:scale-95 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md shadow-teal-200 transition-all duration-200"
+            >
+                <HiOutlinePlusSm className="text-xl" />
+                Add Product
+            </button>
         </div>
     )
 }

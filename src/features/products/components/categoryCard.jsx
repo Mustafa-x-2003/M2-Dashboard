@@ -1,7 +1,7 @@
-export default function CategoryCard({cat}){
-    return(
-        <div className="p-[4px]  border-1 rounded-2xl hover:scale-105 cursor-pointer hover:border-blue-500 hover:shadow-md transition-all duration-300">
-            <p className="text-gray-500 hover:text-black transition-all duration-300 text-sm">{cat}</p>
-        </div>
+export default function CategoryCard({ cat }) {
+    return (
+        <span className="inline-block bg-gray-100 hover:bg-teal-50 hover:text-teal-600 border border-gray-200 hover:border-teal-200 text-gray-500 text-xs font-medium px-2.5 py-1 rounded-lg cursor-default transition-all duration-200">
+            {cat}
+        </span>
     )
 }
