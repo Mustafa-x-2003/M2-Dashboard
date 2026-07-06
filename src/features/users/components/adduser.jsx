@@ -39,7 +39,7 @@ const AddUserForm = ({ onClose }) => {
 };
   return (
     <div><Toaster position="top-right" />
-    <div className="overflow-hidden rounded-3xl border border-cyan-200 bg-white shadow-lg mt-6">
+    <div className="overflow-hidden rounded-3xl border border-cyan-200 bg-white shadow-lg mb-5">
       <div className="bg-cyan-50 px-6 py-4 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <div className="bg-cyan-500 p-2 rounded-xl text-white">
