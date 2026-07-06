@@ -6,7 +6,7 @@ import { useAuth } from "../../context/AuthContext";
 // import icons
 import { MdOutlineNotificationsNone } from "react-icons/md";
 import { MdLightMode } from "react-icons/md";
-import { MdDarkMode } from "react-icons/md";
+import { MdOutlineDarkMode } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 
 function Navbar() {
@@ -21,7 +21,7 @@ function Navbar() {
     },
     {
       id: 1,
-      icon: theme === "dark" ? <MdLightMode /> : <MdDarkMode />,
+      icon: theme === "dark" ? <MdLightMode /> : <MdOutlineDarkMode />,
       style:
         "text-2xl  w-12 h-12 flex justify-center items-center rounded-xl cursor-pointer bg-gray-200  ",
       callback: toggleTheme,
@@ -36,8 +36,8 @@ function Navbar() {
     },
   ];
   return (
-    <div className="fixed top-0  left-71 z-1000 right-0 ">
-      <div className="h-20 bg-[var(--navbar)] border-b border-[var(--border)] flex justify-between px-10 items-center">
+    <div className="fixed top-0 left-0   lg:left-70 z-1000 right-0 ">
+      <div className="h-20 bg-[var(--navbar)] transition-all duration-300 border-b border-[var(--border)] flex justify-between px-10 items-center">
         <h1 className="text-4xl  text-[var(--text)]">my header</h1>
 
         <div className="flex justify-between gap-3">
