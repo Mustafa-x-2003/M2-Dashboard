@@ -28,15 +28,10 @@ function Dashboard() {
 
       <div className="p-4 md:p-8">
         <StatusCardsSection dashdata={dashboard} />
-
-        <div className="mt-6">
-          <OrderStatusSection dashdata={dashboard} />
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-5 mt-6">
+          <OrderStatusSection dashdata={dashboard} />
           <TopProduct dashboard={dashboard} />
-        </div>
-
+          </div>
         <div className="mt-6 w-full">
           <RecentOrders dashboard={dashboard} />
         </div>
