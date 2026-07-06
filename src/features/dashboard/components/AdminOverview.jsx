@@ -1,11 +1,10 @@
 import React from "react";
-const AdminOverview=({title,title2,desc})=>{
+import DashboardOverviewGrid from "./DashboardOverviewGrid/DashboardOverviewGrid";
+const AdminOverview=()=>{
     return(
-        <div className="w-[95%] mx-auto rounded-2xl p-6 bg-white shadow-2xl">
-        <h2 className="text-sky-300 tracking-[4px] capitalize text-lg">{title}</h2>
-        <h2 className="font-bold text-2xl mt-2">{title2}</h2>
-        <p className="mt-2 text-stone-400 font-light">{desc}</p>
-        </div>
+        <DashboardOverviewGrid title="Admin overview" subtitle="Real-time commerce health">
+            <h2 className="text-2xl text-stone-500 font-light">Monitor your storefront with AI-style clarity and live API metrics.</h2>
+        </DashboardOverviewGrid>
     )
 }
 export default AdminOverview;
