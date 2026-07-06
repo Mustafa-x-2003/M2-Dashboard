@@ -30,7 +30,7 @@ export const ENDPOINTS = {
     BASE:    "/products",
     SEARCH:  "/products/search",
     BY_ID:   (id) => `/products/${id}`,
-    UPDATE:  (id) => `/products/update/${id}`,  // PATCH — different from DELETE path
+    UPDATE:  (id) => `/products/update/${id}`,
   },
 
   // ─── Reviews ──────────────────────────────────────────────────────────────
