@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import AddUserForm from './adduser';
-import { FaSearch, FaUserPlus, FaChevronDown } from 'react-icons/fa';
+import SearchUser from './searchuser';
+import { FaSearch,FaUserPlus, FaChevronDown } from 'react-icons/fa';
 
 const UserManager = () => {
-
-import SearchUser from './searchuser';
-import { FaUserPlus, FaChevronDown } from 'react-icons/fa';
-
 const UserManager = ({ searchTerm, setSearchTerm }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import UserManager from '../components/usermanagement';
-import UsersTable from "../components/UsersTable";
 import StatsGrid from '../components/statsgrid';
 import UsersTable from "../components/UsersTable";
 function Users() {
