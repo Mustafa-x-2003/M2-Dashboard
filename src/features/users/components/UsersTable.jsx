@@ -7,6 +7,8 @@ import EditUserModal from "./EditUserModal";
 
 function UsersTable({ searchTerm }) {
   const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [isEditOpen, setIsEditOpen] = useState(false);
 
   useEffect(() => {
     fetchUsers();
@@ -124,7 +126,7 @@ function UsersTable({ searchTerm }) {
         user={selectedUser}
         isOpen={isEditOpen}
         onClose={() => setIsEditOpen(false)}
-        onSave={handleUpdateUser}
+        onSave={fetchUsers}
       />
     </div>
   );
