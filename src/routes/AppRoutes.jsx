@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router";
 
 import Login from "../features/auth/pages/LoginPage";
+// import Dashboard from "../features/dashboard/pages/Dashboard";
 import Dashboard from "../features/dashboard/pages/Dashboard";
 import Products from "../features/products/pages/Products";
 import Orders from "../features/orders/pages/Orders";
