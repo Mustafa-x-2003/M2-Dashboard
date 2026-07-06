@@ -37,7 +37,6 @@ const UserManager = () => {
           <AddUserForm onClose={() => setIsFormOpen(false)} />
         </div>
       </div>
-      <UsersTable />
     </div>
   );
 };
