@@ -7,9 +7,9 @@ function Users() {
 
   return (
     <div className="w-full h-full p-10">
-      <UserManager searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <UserManager searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
       <StatsGrid />
-      <UsersTable searchTerm={searchTerm} />
+      <UsersTable searchTerm={searchTerm}/>
     </div>
   );
 }
