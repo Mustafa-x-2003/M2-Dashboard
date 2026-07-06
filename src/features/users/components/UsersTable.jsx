@@ -1,9 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { getUsers } from "../services/usersApi";
+import { getUsers, updateUser, } from "../services/usersApi";
 import { FiEdit2, FiShield, FiTrash2 } from "react-icons/fi";
+import toast from "react-hot-toast";
+import EditUserModal from "./EditUserModal";
 
 function UsersTable() {
   const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+
+  const handleUpdateUser = async (updatedData) => {
+    try {
+      await updateUser(
+        selectedUser._id,
+        updatedData
+      );
+      toast.success("User updated successfully");
+      fetchUsers();
+      setIsEditOpen(false);
+    }
+    catch (error) {
+      toast.error("Failed to update user");
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     fetchUsers();
@@ -107,16 +127,13 @@ function UsersTable() {
                 <div className="flex gap-3">
 
                   <button
-                    className="
-        w-12 h-12 rounded-2xl
-        bg-blue-500
-        text-white
-        flex items-center justify-center
-        hover:bg-blue-600
-        transition-all duration-300
-      "
+                    onClick={() => {
+                      setSelectedUser(user);
+                      setIsEditOpen(true);
+                    }}
+                    className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-xl"
                   >
-                    <FiEdit2 size={20} />
+                    <FiEdit2 />
                   </button>
 
                   <button
@@ -151,6 +168,12 @@ function UsersTable() {
           ))}
         </tbody>
       </table>
+      <EditUserModal
+        user={selectedUser}
+        isOpen={isEditOpen}
+        onClose={() => setIsEditOpen(false)}
+        onSave={handleUpdateUser}
+      />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AddUserForm from './adduser';
 import { FaSearch, FaUserPlus, FaChevronDown } from 'react-icons/fa';
-import UsersTable from "./UsersTable";
+
 const UserManager = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   return (
@@ -37,7 +37,6 @@ const UserManager = () => {
           <AddUserForm onClose={() => setIsFormOpen(false)} />
         </div>
       </div>
-      <UsersTable />
     </div>
   );
 };
