@@ -33,17 +33,35 @@ function UsersTable({ searchTerm }) {
   });
 
   const handleToggleRole = async (user) => {
-    try {
-      await toggleUserRole(
-        user._id,
-        user.role
-      );
+  const newRole =
+    user.role === "admin"
+      ? "customer"
+      : "admin";
 
-      fetchUsers();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // تحديث الواجهة فورًا
+  setUsers((prevUsers) =>
+    prevUsers.map((u) =>
+      u._id === user._id
+        ? { ...u, role: newRole }
+        : u
+    )
+  );
+
+  try {
+    await toggleUserRole(user._id, user.role);
+  } catch (error) {
+    console.log(error);
+
+    // رجوع للحالة القديمة لو فشل الطلب
+    setUsers((prevUsers) =>
+      prevUsers.map((u) =>
+        u._id === user._id
+          ? { ...u, role: user.role }
+          : u
+      )
+    );
+  }
+};
 
   return (
     <div className="bg-white rounded-3xl shadow-xl mt-6 overflow-hidden">
@@ -81,6 +99,7 @@ function UsersTable({ searchTerm }) {
                 <td className="py-6 px-4">
                   <span
                     className={`px-4 py-2 rounded-full text-sm font-semibold
+    transition-all duration-500 ease-in-out
   ${user.role === "admin"
                         ? "bg-purple-100 text-purple-700"
                         : "bg-cyan-100 text-cyan-700"
@@ -119,7 +138,7 @@ function UsersTable({ searchTerm }) {
                     </button>
                     <button
                       onClick={() => handleToggleRole(user)}
-                      className="w-12 h-12 rounded-2xl bg-green-500 text-white hover:bg-green-600 transition-all duration-300"
+                      className="w-12 h-12 rounded-2xl bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-all duration-300"
                     >
                       <FiShield />
                     </button>

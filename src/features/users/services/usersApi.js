@@ -22,9 +22,7 @@ export const toggleUserRole = async (id, currentRole) => {
 
   const response = await axiosInstance.patch(
     ENDPOINTS.USER_BY_ID(id),
-    {
-      role: newRole,
-    }
+      {role: newRole,}
   );
 
   return response.data;
