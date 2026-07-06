@@ -1,4 +1,3 @@
-
 import { Outlet } from "react-router";
 
 import Navbar from "./Navbar";
@@ -6,15 +5,19 @@ import Sidebar from "./Sidebar";
 
 export default function DashboardLayout() {
   return (
-    <div className="flex h-screen">
-      <aside className="hidden lg:block lg:w-80 bg-gray-600">
+    <div className="flex min-h-screen transition-all duration-300 bg-[var(--background)]">
+      <aside className="fixed left-0 top-0 h-screen w-70 bg-[var(--sidebar)] border-r border-[var(--border)] transition-all duration-300">
+        <h1 className="py-3 pl-8 text-[var(--text)] text-2xl font-bold flex items-center">
+          M2-Dashboard
+        </h1>
+
         <Sidebar />
       </aside>
 
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex-1 ml-70">
         <Navbar />
 
-        <main className="min-w-0 flex-1 overflow-y-auto bg-amber-600">
+        <main className="mt-20 min-h-[calc(100vh-80px)] overflow-y-auto p-6 transition-all duration-300">
           <Outlet />
         </main>
       </div>
