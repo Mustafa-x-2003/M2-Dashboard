@@ -8,8 +8,15 @@ function Users() {
 
   return (
     <div className="w-full h-full p-10">
+<<<<<<< HEAD
       <UserManager searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <StatsGrid />
+=======
+      <UserManager />
+       <StatsGrid />
+      <UsersTable />
+      <UserManager searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+>>>>>>> d1ba71f440680b76dfc0efcef8480d132c19608d
       <UsersTable searchTerm={searchTerm} />
     </div>
   );
