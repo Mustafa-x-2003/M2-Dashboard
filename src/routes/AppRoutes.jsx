@@ -7,9 +7,13 @@ import Dashboard from "../features/dashboard/pages/Dashboard";
 import Products from "../features/products/pages/Products";
 import Orders from "../features/orders/pages/Orders";
 import Users from "../features/users/pages/Users";
+<<<<<<< HEAD
+import ViewProductsPage from "../features/products/pages/ViewProductsPage";
+=======
 import AddProduct from "../features/products/pages/AddProduct";
 import Carts from "../features/cart/pages/CartsPage";
 import Settings from "../features/settings/pages/Settings";
+>>>>>>> 8f259e8640bf7ac31d52e08d10e3d6939a60f7a4
 
 import DashboardLayout from "../components/layout/DashboardLayout";
 import ProtectedRoute from "./ProtectedRoute";
@@ -32,9 +36,13 @@ export default function AppRoutes() {
         <Route path="/products" element={<Products />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/users" element={<Users />} />
+<<<<<<< HEAD
+        <Route path="/products/view/:id" element={<ViewProductsPage />} />
+=======
         <Route path="/addProduct" element={<AddProduct />} />
         <Route path="/carts" element={<Carts />} />
         <Route path="/settings" element={<Settings />} />
+>>>>>>> 8f259e8640bf7ac31d52e08d10e3d6939a60f7a4
       </Route>
     </Routes>
   );
