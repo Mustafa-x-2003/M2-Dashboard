@@ -1,4 +1,3 @@
-
 import { Outlet } from "react-router";
 
 import Navbar from "./Navbar";
@@ -6,15 +5,17 @@ import Sidebar from "./Sidebar";
 
 export default function DashboardLayout() {
   return (
-    <div className="flex h-screen">
-      <aside className="hidden lg:block lg:w-80 bg-gray-600">
+    <div className="flex h-fit bg-[var(--background)]">
+     
+      <aside className="hidden lg:block left-0 top-0 h-screen w-71 bg-[var(--sidebar)] border-r border-[var(--border)]">
         <Sidebar />
       </aside>
 
-      <div className="flex min-w-0 flex-1 flex-col">
+      
+      <div className="ml-70 flex h-full flex-1 flex-col">
         <Navbar />
 
-        <main className="min-w-0 flex-1 overflow-y-auto bg-amber-600">
+        <main className="mt-20 h-full flex-1 p-6">
           <Outlet />
         </main>
       </div>
