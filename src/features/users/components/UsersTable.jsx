@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getUsers, updateUser, } from "../services/usersApi";
 import { FiEdit2, FiShield, FiTrash2 } from "react-icons/fi";
-<<<<<<< HEAD
 import toast from "react-hot-toast";
 import EditUserModal from "./EditUserModal";
 
@@ -26,11 +25,9 @@ function UsersTable() {
     }
   };
 
-=======
 function UsersTable({ searchTerm }) {
   const [users, setUsers] = useState([]);
   
->>>>>>> 448bba17ccc21987c949b1fa2af75f19a07ab96d
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -85,52 +82,6 @@ function UsersTable({ searchTerm }) {
                   </div>
                 </td>
 
-<<<<<<< HEAD
-              <td className="py-6 px-4">
-                <span
-                  className={`px-5 py-2 rounded-full text-sm font-semibold
-          ${user.role === "admin"
-                      ? "bg-purple-100 text-purple-600"
-                      : "bg-cyan-100 text-cyan-600"
-                    }`}
-                >
-                  {user.role}
-                </span>
-              </td>
-
-              <td className="py-6 px-4">
-                <div className="flex items-center gap-2">
-                  {user.isVerified ? (
-                    <>
-                      <span className="text-green-500 text-xl">✅</span>
-                      <span className="text-green-600 font-medium">
-                        Verified
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="text-red-500 text-xl">❌</span>
-                      <span className="text-gray-400 font-medium">
-                        No
-                      </span>
-                    </>
-                  )}
-                </div>
-              </td>
-
-              <td className="py-6 px-4">
-                <div className="flex gap-3">
-
-                  <button
-                    onClick={() => {
-                      setSelectedUser(user);
-                      setIsEditOpen(true);
-                    }}
-                    className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-xl"
-                  >
-                    <FiEdit2 />
-                  </button>
-=======
                 <td className="py-6 px-4">
                   <span
                     className={`px-5 py-2 rounded-full text-sm font-semibold
@@ -139,7 +90,6 @@ function UsersTable({ searchTerm }) {
                     {user.role}
                   </span>
                 </td>
->>>>>>> 448bba17ccc21987c949b1fa2af75f19a07ab96d
 
                 <td className="py-6 px-4">
                   <div className="flex items-center gap-2">
@@ -191,6 +141,8 @@ function UsersTable({ searchTerm }) {
       />
     </div>
   );
+};
 }
+
 
 export default UsersTable;
