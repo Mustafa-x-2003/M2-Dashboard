@@ -1,5 +1,5 @@
 import { AuthProvider } from "../../context/AuthContext";
-import { ThemeProvider } from "../../contexts/ThemeContext";
+import {ThemeProvider} from "../../context/ThemeContext";
 
 export default function Providers({ children }) {
   return (
