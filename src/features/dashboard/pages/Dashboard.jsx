@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AdminOverview from "../components/AdminOverview";
 import { getDashboard } from "../services/dashboardApi";
 import StatusCardsSection from "../components/StatusCardsSection";
 import TopProduct from "../components/TopProduct/TopProduct";
@@ -21,15 +22,19 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="p-4 md:p-8">
-      <StatusCardsSection dashdata={dashboard} />
+    <div>
+      <AdminOverview />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-5 mt-6">
-        <TopProduct dashboard={dashboard} />
-      </div>
+      <div className="p-4 md:p-8">
+        <StatusCardsSection dashdata={dashboard} />
 
-      <div className="mt-6 w-full">
-        <RecentOrders dashboard={dashboard} />
+        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-5 mt-6">
+          <TopProduct dashboard={dashboard} />
+        </div>
+
+        <div className="mt-6 w-full">
+          <RecentOrders dashboard={dashboard} />
+        </div>
       </div>
     </div>
   );
