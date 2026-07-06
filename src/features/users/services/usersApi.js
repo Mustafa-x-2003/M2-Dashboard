@@ -14,3 +14,16 @@ export const updateUser = async (id, userData) => {
     );
     return response.data;
 };
+
+export const toggleUserRole = async (id, currentRole) => {
+  const newRole = currentRole === "admin"
+    ? "customer"
+    : "admin";
+
+  const response = await axiosInstance.patch(
+    ENDPOINTS.USER_BY_ID(id),
+      {role: newRole,}
+  );
+
+  return response.data;
+};
