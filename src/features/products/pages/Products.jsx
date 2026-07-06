@@ -1,13 +1,16 @@
 import { useProductSearch } from "../hooks/useProductSearch"
 import ProductList from "../components/productList"
 import SearchBar from "../components/searchBar"
-
-export default function Products({ onEdit, onDelete, onView, AddToCart }) {
-    const { result, loading, error, query, setQuery } = useProductSearch()
+import ProductsStatesLIst from "../components/productsStatesLIst"
+import AddProduct from "../components/addProduct"
+export default function Products({ onEdit, onDelete, onView, AddToCart , addProduct}) {
+    const { result, loading, error, query, setQuery, cat, setCat } = useProductSearch()
 
     return (
         <div className="bg-gray-50 h-full w-full ">
-            <SearchBar query={query} setQuery={setQuery} loading={loading} />
+            <AddProduct addProduct={addProduct}/>
+            <ProductsStatesLIst products={result}/>
+            <SearchBar query={query} setQuery={setQuery} loading={loading} cat={cat} setCat={setCat} />
             <ProductList
                 products={result}
                 loading={loading}

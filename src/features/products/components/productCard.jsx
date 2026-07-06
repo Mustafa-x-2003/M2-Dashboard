@@ -2,12 +2,13 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { useState } from "react";
 import ImagesList from "./imagesLIst";
 import CategoryCardList from "./categoryCardLIst";
-export default function ProductCard({isUser, product, onEdit, onDelete , onView ,AddToCart}){
+import { number } from "motion";
+export default function ProductCard({isUser, product, onEdit, onDelete , onView ,AddToCart }){
     const [clickAdd, setClickAdd] = useState(false);
     return(
         <>
-         <div key={product._id} className="bg-white rounded-2xl shadow p-4 flex flex-col gap-3 ">
-      <ImagesList images={product.images}/>
+         <div key={product._id} className="bg-white rounded-2xl shadow p-4 flex flex-col gap-3 max-w-[450px] hover:scale-105 transition-all duration-300">
+      <ImagesList featured = {product.featured} images={product.images}/>
       <div className="flex items-center justify-between">
         <h3 className="font-semibold text-lg">{product.name}</h3>
         <button onClick={()=> onView(product)} className="flex items-center gap-1 text-gray-500 hover:text-gray-700 transition-colors duration-200 cursor-alias">
@@ -18,7 +19,17 @@ export default function ProductCard({isUser, product, onEdit, onDelete , onView 
       <p className="text-gray-500 text-sm line-clamp-2">{product.shortDescription}</p>
 
       <div className="flex items-center justify-between">
-        <span className="text-blue-600 font-bold ">${product.price}</span>
+        <div>
+          {(Number(product.discountPrice) && Number(product.discountPrice)!== 0)?
+             <div className="flex items-center gap-2"> 
+                <span className="text-blue-600 font-bold line-through  ">${product.price}</span> 
+                <span className="text-red-500 font-bold text-sm">${product.discountPrice}</span>
+             </div>
+               
+                : <span className="text-blue-600 font-bold ">${product.price}</span>
+
+        }
+        </div>
         <span className="text-sm text-gray-400">{product.stock} in stock</span>
       </div>
       <div>

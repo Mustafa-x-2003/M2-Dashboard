@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ProductImage from "./productImage";
 
-export default function ImagesList({ images }) {
+export default function ImagesList({ images , featured  }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function ImagesList({ images }) {
 
   return (
     <div className="relative w-full h-48 overflow-hidden">
-      <ProductImage  imageUrl={images[currentIndex]?.url} />
+      <ProductImage featured = {featured} imageUrl={images[currentIndex]?.url} />
     </div>
   );
 }
