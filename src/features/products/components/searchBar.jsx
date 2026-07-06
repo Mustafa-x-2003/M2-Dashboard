@@ -2,7 +2,7 @@ import { useState } from "react"
 import { HiOutlineSearch, HiOutlineAdjustments } from "react-icons/hi"
 import FilterSearch from "./filterSearch";
 
-export default function SearchBar({ query, setQuery, loading, cat, setCat }) {
+export default function SearchBar({ query, setQuery, loading, cat, setCat, products }) {
     const [filter, setFilter] = useState(false)
 
     return (
@@ -46,7 +46,7 @@ export default function SearchBar({ query, setQuery, loading, cat, setCat }) {
             </div>
 
             
-            {filter && <FilterSearch cat={cat} setCat={setCat} />}
+            {filter && <FilterSearch cat={cat} setCat={setCat} products={products} />}
         </div>
     )
 }

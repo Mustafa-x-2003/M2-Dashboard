@@ -1,8 +1,8 @@
-import { useProducts } from "../hooks/useProducts"
 import { HiOutlineTag, HiOutlineViewGrid } from "react-icons/hi"
+import {useProducts} from "../hooks/useProducts"
 
-export default function FilterSearch({ cat, setCat }) {
-    const { products } = useProducts()
+export default function FilterSearch({ cat, setCat, }) {
+    const {products} = useProducts()
     const categories = [...new Set(products.map(product => product.category))];
 
     return (

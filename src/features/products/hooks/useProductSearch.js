@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { searchProducts, getAllProducts } from "../services/productsApi";
 
@@ -9,37 +10,43 @@ export function useProductSearch() {
   const [result, setResult] = useState([]);
   const [refreshkey, setRefreshKey] = useState(0);
 
-  const search = useCallback(async (q, category) => {
+  const search = useCallback(async (q, category, signal) => {
     setLoading(true);
     setError(null);
     try {
-      const hasQuery    = q.trim()            !== '';
-      const hasCategory = category            !== 'all';
+      const hasQuery    = q.trim()   !== '';
+      const hasCategory = category   !== 'all';
 
       if (!hasQuery && !hasCategory) {
-        
-        const { data } = await getAllProducts();
+        const { data } = await getAllProducts(signal);
         setResult(Array.isArray(data) ? data : (data.products ?? []));
       } else {
-        
         const params = {};
         if (hasQuery)    params.search   = q.trim();
         if (hasCategory) params.category = category;
 
-        const { data } = await searchProducts(params);
+        const { data } = await searchProducts(params, signal);
         setResult(Array.isArray(data) ? data : (data.products ?? []));
       }
     } catch (err) {
+      if (axios.isCancel(err) || err?.code === "ERR_CANCELED") return;
       setError(err);
     } finally {
-      setLoading(false);
+      if (!signal?.aborted) {
+        setLoading(false);
+      }
     }
   }, []);
 
   useEffect(() => {
+    const controller = new AbortController();
     const delay = query.trim() ? 400 : 0;
-    const timer = setTimeout(() => search(query, cat), delay);
-    return () => clearTimeout(timer);
+    const timer = setTimeout(() => search(query, cat, controller.signal), delay);
+
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
   }, [query, cat, refreshkey, search]);
 
   const refresh = () => setRefreshKey(prev => prev + 1);
