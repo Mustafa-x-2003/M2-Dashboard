@@ -163,7 +163,7 @@ function UsersTable({ searchTerm }) {
                     <button
                       onClick={() => handleDeleteUser(user._id)}
                       className="
-    w-10 h-10
+    w-12 h-12
     rounded-2xl
     bg-red-500
     hover:bg-red-600
@@ -171,7 +171,7 @@ function UsersTable({ searchTerm }) {
     flex items-center justify-center
   "
                     >
-                      <FaTrash className="text-white" />
+                      <FiTrash2 className="text-white" />
                     </button>
                   </div>
                 </td>
