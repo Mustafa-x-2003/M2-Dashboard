@@ -13,11 +13,9 @@ export default function ProductCard({ isUser, product, onEdit, onDelete, onView,
     return (
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden group">
 
-            {/* Image */}
             <div className="relative overflow-hidden">
                 <ImagesList featured={product.featured} images={product.images} />
 
-                {/* Stock badge overlay */}
                 <div className="absolute bottom-2 left-2">
                     {Number(product.stock) === 0 ? (
                         <span className="bg-red-500 text-white text-xs font-semibold px-2.5 py-1 rounded-lg">
@@ -31,17 +29,14 @@ export default function ProductCard({ isUser, product, onEdit, onDelete, onView,
                 </div>
             </div>
 
-            {/* Body */}
             <div className="p-4 flex flex-col gap-3 flex-1">
 
-                {/* Category breadcrumb */}
                 <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">
                     {[product.category, product.subcategory, product.brand]
                         .filter(Boolean)
                         .join(" · ")}
                 </p>
 
-                {/* Name + View */}
                 <div className="flex items-start justify-between gap-2">
                     <h3 className="font-semibold text-gray-800 text-base leading-snug line-clamp-2 flex-1">{product.name}</h3>
                     <button
@@ -53,10 +48,8 @@ export default function ProductCard({ isUser, product, onEdit, onDelete, onView,
                     </button>
                 </div>
 
-                {/* Description */}
                 <p className="text-gray-500 text-xs line-clamp-2 leading-relaxed">{product.shortDescription}</p>
 
-                {/* Price */}
                 <div>
                     {hasDiscount ? (
                         <div className="flex items-baseline gap-2 flex-wrap">
@@ -68,10 +61,8 @@ export default function ProductCard({ isUser, product, onEdit, onDelete, onView,
                     )}
                 </div>
 
-                {/* Tags */}
                 <CategoryCardList cats={product.tags} />
 
-                {/* Actions */}
                 <div className="flex flex-col gap-2 mt-auto pt-2 border-t border-gray-50">
                     {!isUser && (
                         <div className="grid grid-cols-3 gap-1.5">

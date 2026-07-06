@@ -9,7 +9,6 @@ export default function FilterSearch({ cat, setCat }) {
         <div className="w-full bg-white border border-gray-200 rounded-2xl p-5 mt-3 shadow-sm">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-                {/* Category */}
                 <div>
                     <label className="flex items-center gap-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
                         <HiOutlineTag className="text-base" />
@@ -25,7 +24,6 @@ export default function FilterSearch({ cat, setCat }) {
                     </select>
                 </div>
 
-                {/* Subcategory placeholder */}
                 <div>
                     <label className="flex items-center gap-1.5 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
                         <HiOutlineViewGrid className="text-base" />
