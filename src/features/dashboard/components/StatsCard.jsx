@@ -13,7 +13,7 @@ const StatsCard=({title,icon,data,color,status})=>{
                 {icon}
             </div>
             </div>
-            <div className="mt-6 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent dark:via-slate-900 mb-7"></div>
+            <div className="mt-6 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent dark:via-slate-900 mb-6"></div>
         </div>
     )
 }
