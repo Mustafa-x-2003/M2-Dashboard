@@ -82,8 +82,8 @@ function UsersTable({ searchTerm }) {
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-xl mt-6 overflow-hidden">
-      <table className="w-full">
+    <div className="bg-white rounded-3xl p-6 shadow-xl mt-6 overflow-x-auto">
+      <table className="min-w-[850px] w-full">
         <thead className="bg-slate-50">
           <tr>
             <th className="text-left px-4 py-5 text-gray-600 font-semibold">User</th>
@@ -105,11 +105,16 @@ function UsersTable({ searchTerm }) {
                     <img
                       src={user.avatar || "https://i.pravatar.cc/150"}
                       alt={user.username}
-                      className="w-14 h-14 rounded-full object-cover"
+                      className="
+w-10 h-10
+sm:w-12 sm:h-12
+rounded-full
+object-cover
+"
                     />
                     <div>
-                      <h3 className="font-semibold text-gray-800 text-lg">{user.username}</h3>
-                      <p className="text-gray-500 text-sm">{user.email}</p>
+                      <h3 className="font-semibold text-sm sm:text-base text-gray-800 text-lg">{user.username}</h3>
+                      <p className="text-xs sm:text-sm text-gray-500">{user.email}</p>
                     </div>
                   </div>
                 </td>
@@ -150,20 +155,20 @@ function UsersTable({ searchTerm }) {
                         setSelectedUser(user);
                         setIsEditOpen(true);
                       }}
-                      className="w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center hover:bg-blue-600 transition-all duration-300"
+                      className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center hover:bg-blue-600 transition-all duration-300"
                     >
                       <FiEdit2 size={20} />
                     </button>
                     <button
                       onClick={() => handleToggleRole(user)}
-                      className="w-12 h-12 rounded-2xl bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-all duration-300"
+                      className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-all duration-300"
                     >
                       <FiShield />
                     </button>
                     <button
                       onClick={() => handleDeleteUser(user._id)}
                       className="
-    w-12 h-12
+    w-11 h-11 sm:w-12 sm:h-12
     rounded-2xl
     bg-red-500
     hover:bg-red-600

@@ -45,7 +45,12 @@ function EditUserModal({ user, isOpen, onClose, onSave }) {
         >
             <div
                 onClick={(e) => e.stopPropagation()}
-                className={`bg-white rounded-3xl w-full max-w-2xl p-8 shadow-2xl relative
+                className={`bg-white
+rounded-3xl
+w-full
+max-w-2xl
+p-5 sm:p-8
+mx-4 shadow-2xl relative
     transition-all duration-300 ease-out transform
     ${isOpen
                         ? "opacity-100 scale-100 translate-y-0"
@@ -60,7 +65,7 @@ function EditUserModal({ user, isOpen, onClose, onSave }) {
                     <FaTimes size={22} />
                 </button>
 
-                <h2 className="text-4xl font-bold mb-8 text-slate-800">
+                <h2 className="text-2xl sm:text-4xl font-bold mb-8 text-slate-800">
                     Edit User
                 </h2>
 
@@ -76,7 +81,7 @@ function EditUserModal({ user, isOpen, onClose, onSave }) {
                             name="username"
                             value={formData.username}
                             onChange={handleChange}
-                            className="w-full bg-gray-100 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="w-full bg-gray-100 rounded-2xl px-5 py-3 sm:py-4 outline-none focus:ring-2 focus:ring-cyan-500"
                         />
                     </div>
 
@@ -90,7 +95,7 @@ function EditUserModal({ user, isOpen, onClose, onSave }) {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full bg-gray-100 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="w-full bg-gray-100 rounded-2xl px-5 py-3 sm:py-4 outline-none focus:ring-2 focus:ring-cyan-500"
                         />
                     </div>
 
@@ -104,14 +109,14 @@ function EditUserModal({ user, isOpen, onClose, onSave }) {
                             name="avatar"
                             value={formData.avatar}
                             onChange={handleChange}
-                            className="w-full bg-gray-100 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="w-full bg-gray-100 rounded-2xl px-5 py-3 sm:py-4 outline-none focus:ring-2 focus:ring-cyan-500"
                         />
                     </div>
 
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-cyan-500 hover:bg-cyan-600 disabled:bg-cyan-300 text-white py-4 rounded-2xl font-bold transition"
+                        className="w-full bg-cyan-500 hover:bg-cyan-600 disabled:bg-cyan-300 text-white py-3 sm:py-4 rounded-2xl font-bold transition"
                     >
                         {loading ? "Saving..." : "Save Changes"}
                     </button>
