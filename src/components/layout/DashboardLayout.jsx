@@ -1,8 +1,8 @@
+
 import { Outlet } from "react-router";
 
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-
 
 export default function DashboardLayout() {
   return (
@@ -15,10 +15,7 @@ export default function DashboardLayout() {
         <Navbar />
 
         <main className="min-w-0 flex-1 overflow-y-auto bg-amber-600">
-          <div className="min-h-full">
-            <Outlet />
-            
-          </div>
+          <Outlet />
         </main>
       </div>
     </div>
