@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getUsers } from "../services/usersApi";
+import { getUsers, updateUser, } from "../services/usersApi";
 import { FiEdit2, FiShield, FiTrash2 } from "react-icons/fi";
+import toast from "react-hot-toast";
+import EditUserModal from "./EditUserModal";
+
+
 function UsersTable({ searchTerm }) {
   const [users, setUsers] = useState([]);
-  
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -13,6 +19,7 @@ function UsersTable({ searchTerm }) {
       const data = await getUsers();
       setUsers(data.users);
     } catch (error) {
+      toast.error("Failed to update user");
       console.log(error);
     }
   };
@@ -85,7 +92,13 @@ function UsersTable({ searchTerm }) {
 
                 <td className="py-6 px-4">
                   <div className="flex gap-3">
-                    <button className="w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center hover:bg-blue-600 transition-all duration-300">
+                    <button
+                      onClick={() => {
+                        setSelectedUser(user);
+                        setIsEditOpen(true);
+                      }}
+                      className="w-12 h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center hover:bg-blue-600 transition-all duration-300"
+                    >
                       <FiEdit2 size={20} />
                     </button>
                     <button className="w-12 h-12 rounded-2xl bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-all duration-300">
@@ -109,8 +122,15 @@ function UsersTable({ searchTerm }) {
           </tbody>
         )}
       </table>
+      <EditUserModal
+        user={selectedUser}
+        isOpen={isEditOpen}
+        onClose={() => setIsEditOpen(false)}
+        onSave={fetchUsers}
+      />
     </div>
   );
-}
+};
+
 
 export default UsersTable;

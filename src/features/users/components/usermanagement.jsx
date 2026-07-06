@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AddUserForm from './adduser';
 import SearchUser from './searchuser';
-import { FaUserPlus, FaChevronDown } from 'react-icons/fa';
+import { FaSearch,FaUserPlus, FaChevronDown } from 'react-icons/fa';
 
 const UserManager = ({ searchTerm, setSearchTerm }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -37,5 +37,6 @@ const UserManager = ({ searchTerm, setSearchTerm }) => {
     </div>
   );
 };
+
 
 export default UserManager;
