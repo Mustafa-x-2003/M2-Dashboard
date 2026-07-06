@@ -3,10 +3,12 @@ import { HiOutlinePencil, HiOutlineTrash, HiOutlineLightningBolt, HiShoppingCart
 import { useState } from "react";
 import ImagesList from "./imagesLIst";
 import CategoryCardList from "./categoryCardLIst";
+import { useNavigate } from "react-router";
+
 
 export default function ProductCard({ isUser, product, onEdit, onDelete, onView, AddToCart }) {
     const [clickAdd, setClickAdd] = useState(false);
-
+    const navigate = useNavigate();
     const hasDiscount = Number(product.discountPrice) && Number(product.discountPrice) !== 0;
     const saving = hasDiscount ? product.price - product.discountPrice : 0;
 
@@ -67,7 +69,7 @@ export default function ProductCard({ isUser, product, onEdit, onDelete, onView,
                     {!isUser && (
                         <div className="grid grid-cols-3 gap-1.5">
                             <button
-                                onClick={() => onView(product)}
+                                onClick={() => navigate(`/view/${product._id}`)}
                                 className="flex items-center justify-center gap-1 text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 py-2 rounded-lg transition-all duration-200 active:scale-95"
                             >
                                 <MdOutlineRemoveRedEye className="text-sm" /> View
