@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router";
 import Login from "../features/auth/pages/LoginPage";
 import Dashboard from "../features/dashboard/pages/Dashboard";
 import Products from "../features/products/pages/Products";
+import AddProduct from "../features/products/pages/AddProduct";
 import Orders from "../features/orders/pages/Orders";
 import Users from "../features/users/pages/Users";
 
@@ -24,6 +25,7 @@ export default function AppRoutes() {
       >
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/add" element={<AddProduct />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/users" element={<Users />} />
       </Route>
