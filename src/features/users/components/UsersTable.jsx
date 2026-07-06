@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUsers, updateUser, } from "../services/usersApi";
+import { getUsers, updateUser, toggleUserRole } from "../services/usersApi";
 import { FiEdit2, FiShield, FiTrash2 } from "react-icons/fi";
 import toast from "react-hot-toast";
 import EditUserModal from "./EditUserModal";
@@ -31,6 +31,19 @@ function UsersTable({ searchTerm }) {
       user.email?.toLowerCase().includes(term)
     );
   });
+
+  const handleToggleRole = async (user) => {
+    try {
+      await toggleUserRole(
+        user._id,
+        user.role
+      );
+
+      fetchUsers();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="bg-white rounded-3xl shadow-xl mt-6 overflow-hidden">
@@ -67,8 +80,11 @@ function UsersTable({ searchTerm }) {
 
                 <td className="py-6 px-4">
                   <span
-                    className={`px-5 py-2 rounded-full text-sm font-semibold
-                    ${user.role === "admin" ? "bg-purple-100 text-purple-600" : "bg-cyan-100 text-cyan-600"}`}
+                    className={`px-4 py-2 rounded-full text-sm font-semibold
+  ${user.role === "admin"
+                        ? "bg-purple-100 text-purple-700"
+                        : "bg-cyan-100 text-cyan-700"
+                      }`}
                   >
                     {user.role}
                   </span>
@@ -101,8 +117,11 @@ function UsersTable({ searchTerm }) {
                     >
                       <FiEdit2 size={20} />
                     </button>
-                    <button className="w-12 h-12 rounded-2xl bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition-all duration-300">
-                      <FiShield size={20} />
+                    <button
+                      onClick={() => handleToggleRole(user)}
+                      className="w-12 h-12 rounded-2xl bg-green-500 text-white hover:bg-green-600 transition-all duration-300"
+                    >
+                      <FiShield />
                     </button>
                     <button className="w-12 h-12 rounded-2xl bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-all duration-300">
                       <FiTrash2 size={20} />
