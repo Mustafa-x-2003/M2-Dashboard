@@ -87,13 +87,14 @@ export default function ProductCard({ isUser, product, onEdit, onDelete, onView,
                         </div>
                     )}
 
-                    <button
+                    {isUser && (
+                        <button
                         onClick={() => {
                             AddToCart(product);
                             setClickAdd(!clickAdd);
                         }}
                         className={`flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 active:scale-95
-                            ${clickAdd
+                            ${clickAdd 
                                 ? "bg-red-50 text-red-500 hover:bg-red-100 border border-red-200"
                                 : "bg-teal-500 text-white hover:bg-teal-600 shadow-md shadow-teal-100"
                             }`}
@@ -101,6 +102,7 @@ export default function ProductCard({ isUser, product, onEdit, onDelete, onView,
                         <HiShoppingCart className="text-base" />
                         {clickAdd ? "Remove from Cart" : "Add to Cart"}
                     </button>
+                    )}
                 </div>
             </div>
         </div>

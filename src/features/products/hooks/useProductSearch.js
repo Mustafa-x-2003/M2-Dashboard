@@ -9,7 +9,7 @@ export function useProductSearch() {
   const [result, setResult] = useState([]);
   const [refreshkey, setRefreshKey] = useState(0);
 
-  const search = useCallback(async (q, category) => {
+  const search = useCallback(async (q, category, isCancelled) => {
     setLoading(true);
     setError(null);
     try {
@@ -19,7 +19,9 @@ export function useProductSearch() {
       if (!hasQuery && !hasCategory) {
         
         const { data } = await getAllProducts();
-        setResult(Array.isArray(data) ? data : (data.products ?? []));
+        if (!isCancelled.current) {
+          setResult(Array.isArray(data) ? data : (data.products ?? []));
+        }
       } else {
         
         const params = {};
@@ -27,19 +29,26 @@ export function useProductSearch() {
         if (hasCategory) params.category = category;
 
         const { data } = await searchProducts(params);
-        setResult(Array.isArray(data) ? data : (data.products ?? []));
+        if (!isCancelled.current) {
+          setResult(Array.isArray(data) ? data : (data.products ?? []));
+        }
       }
     } catch (err) {
-      setError(err);
+      if (!isCancelled.current) setError(err);
     } finally {
-      setLoading(false);
+      if (!isCancelled.current) setLoading(false);
     }
   }, []);
 
   useEffect(() => {
+    const isCancelled = { current: false };
     const delay = query.trim() ? 400 : 0;
-    const timer = setTimeout(() => search(query, cat), delay);
-    return () => clearTimeout(timer);
+    const timer = setTimeout(() => search(query, cat, isCancelled), delay);
+    
+    return () => {
+      clearTimeout(timer);
+      isCancelled.current = true;
+    };
   }, [query, cat, refreshkey, search]);
 
   const refresh = () => setRefreshKey(prev => prev + 1);
