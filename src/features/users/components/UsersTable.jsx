@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUsers, updateUser, toggleUserRole } from "../services/usersApi";
+import { getUsers, updateUser, toggleUserRole, deleteUser } from "../services/usersApi";
 import { FiEdit2, FiShield, FiTrash2 } from "react-icons/fi";
 import toast from "react-hot-toast";
 import EditUserModal from "./EditUserModal";
@@ -33,35 +33,53 @@ function UsersTable({ searchTerm }) {
   });
 
   const handleToggleRole = async (user) => {
-  const newRole =
-    user.role === "admin"
-      ? "customer"
-      : "admin";
+    const newRole =
+      user.role === "admin"
+        ? "customer"
+        : "admin";
 
-  // تحديث الواجهة فورًا
-  setUsers((prevUsers) =>
-    prevUsers.map((u) =>
-      u._id === user._id
-        ? { ...u, role: newRole }
-        : u
-    )
-  );
-
-  try {
-    await toggleUserRole(user._id, user.role);
-  } catch (error) {
-    console.log(error);
-
-    // رجوع للحالة القديمة لو فشل الطلب
     setUsers((prevUsers) =>
       prevUsers.map((u) =>
         u._id === user._id
-          ? { ...u, role: user.role }
+          ? { ...u, role: newRole }
           : u
       )
     );
-  }
-};
+
+    try {
+      await toggleUserRole(user._id, user.role);
+    } catch (error) {
+      console.log(error);
+
+      setUsers((prevUsers) =>
+        prevUsers.map((u) =>
+          u._id === user._id
+            ? { ...u, role: user.role }
+            : u
+        )
+      );
+    }
+  };
+
+  const handleDeleteUser = async (userId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this user?"
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+      await deleteUser(userId);
+
+      setUsers((prevUsers) =>
+        prevUsers.filter(
+          (user) => user._id !== userId
+        )
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="bg-white rounded-3xl shadow-xl mt-6 overflow-hidden">
@@ -142,8 +160,18 @@ function UsersTable({ searchTerm }) {
                     >
                       <FiShield />
                     </button>
-                    <button className="w-12 h-12 rounded-2xl bg-red-500 text-white flex items-center justify-center hover:bg-red-600 transition-all duration-300">
-                      <FiTrash2 size={20} />
+                    <button
+                      onClick={() => handleDeleteUser(user._id)}
+                      className="
+    w-12 h-12
+    rounded-2xl
+    bg-red-500
+    hover:bg-red-600
+    transition-all duration-300
+    flex items-center justify-center
+  "
+                    >
+                      <FiTrash2 className="text-white" />
                     </button>
                   </div>
                 </td>
