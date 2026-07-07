@@ -23,6 +23,7 @@ function Dashboard() {
   }, []);
 
   return (
+    <div className="pt-4">
     <div>
       <AdminOverview />
 
@@ -36,6 +37,7 @@ function Dashboard() {
           <RecentOrders dashboard={dashboard} />
         </div>
       </div>
+    </div>
     </div>
   );
 }

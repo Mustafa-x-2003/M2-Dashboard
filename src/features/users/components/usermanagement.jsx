@@ -16,7 +16,7 @@ const UserManager = ({ searchTerm, setSearchTerm }) => {
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <SearchUser searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-            <button onClick={() => setIsFormOpen(!isFormOpen)} className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 active:scale-95 transition text-white px-6 py-3 rounded-2xl font-semibold shadow-md cursor-pointer">
+            <button onClick={() => setIsFormOpen(!isFormOpen)} className="w-full sm:w-auto flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 active:scale-95 transition text-white px-6 py-3 rounded-2xl font-semibold shadow-md cursor-pointerflex items-center justify-center ">
               <FaUserPlus />
               <span>Add User</span>
               <FaChevronDown className={`transition-transform duration-300 ${isFormOpen ? 'rotate-180' : ''}`} />

@@ -38,7 +38,7 @@ function Navbar() {
   return (
     <div className="fixed top-0 left-0   lg:left-70 z-1000 right-0 ">
       <div className="h-20 bg-[var(--navbar)] transition-all duration-300 border-b border-[var(--border)] flex justify-between px-10 items-center">
-        <h1 className="text-4xl  text-[var(--text)]">my header</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text)]">my header</h1>
 
         <div className="flex justify-between gap-3">
           {buttons.map((button) => {
