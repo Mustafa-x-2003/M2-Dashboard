@@ -89,9 +89,12 @@ function UsersTable({ searchTerm }) {
     }
   };
 
+  const actionButtonClass =
+    "w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:brightness-125 active:scale-95";
+
   return (
     <div
-      className="rounded-3xl mt-6 overflow-hidden border shadow-xl"
+      className="rounded-3xl mt-6 overflow-hidden border shadow-xl transition-[background-color,border-color,box-shadow] duration-500 ease-in-out"
       style={{
         background: "var(--surface)",
         borderColor: "var(--border)",
@@ -230,33 +233,57 @@ function UsersTable({ searchTerm }) {
                         setSelectedUser(user);
                         setIsEditOpen(true);
                       }}
-                      className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl transition-all duration-300 flex items-center justify-center"
+                      className={actionButtonClass}
                       style={{
                         background: "var(--primary-light)",
                         color: "var(--primary)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "var(--primary)";
+                        e.currentTarget.style.color = "var(--text-inverse)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "var(--primary-light)";
+                        e.currentTarget.style.color = "var(--primary)";
                       }}
                     >
                       <FiEdit2 size={20} />
                     </button>
                     <button
                       onClick={() => handleToggleRole(user)}
-                      className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl text-white flex items-center justify-center hover:bg-green-600 transition-all duration-300"
+                      className={actionButtonClass}
                       style={{
                         background: "var(--success-light)",
                         color: "var(--success)"
                       }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "var(--success)";
+                        e.currentTarget.style.color = "var(--text-inverse)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "var(--success-light)";
+                        e.currentTarget.style.color = "var(--success)";
+                      }}
                     >
-                      <FiShield />
+                      <FiShield size={20} />
                     </button>
                     <button
                       onClick={() => handleDeleteUser(user._id)}
-                      className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl transition-all duration-300 flex items-center justify-center"
+                      className={actionButtonClass}
                       style={{
                         background: "var(--danger-light)",
                         color: "var(--danger)"
                       }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "var(--danger)";
+                        e.currentTarget.style.color = "var(--text-inverse)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "var(--danger-light)";
+                        e.currentTarget.style.color = "var(--danger)";
+                      }}
                     >
-                      <FiTrash2 />
+                      <FiTrash2 size={20} />
                     </button>
                   </div>
                 </td>
