@@ -13,10 +13,10 @@ export default function DashboardLayout() {
         <Sidebar />
       </aside>
 
-      <div className="flex-1  ml-70">
+      <div className="flex-1 ml-70">
         <Navbar />
 
-        <main className="mt-20 transition-all duration-300 p-6 min-h-[calc(100vh-80px)]">
+        <main className="mt-20 transition-all duration-300 p-1 min-h-[calc(100vh-80px)]">
           <Outlet />
         </main>
       </div>

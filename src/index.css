@@ -39,7 +39,7 @@
   ========================== */
 
   --success: #16A34A;
-  --success-light: #DCFCE7;
+  --success-light: #b7ffd0;
 
   --warning: #F59E0B;
   --warning-light: #FEF3C7;
@@ -78,7 +78,7 @@
       TABLE
   ========================== */
 
-  --table-header: #F8FAFC;
+  --table-header: #e4edf8;
   --table-hover: #F8FAFC;
   --table-striped: #F9FAFB;
 
@@ -176,7 +176,7 @@
       TABLE
   ========================== */
 
-  --table-header: #0F172A;
+  --table-header: #0f1a38;
   --table-hover: #1E293B;
   --table-striped: #111827;
 
