@@ -33,7 +33,7 @@ function Products() {
     
 </div>
 
-  <EditComponent isLoading={isLoading} setisLoading={setisLoading} ids="6a18bc103b36e3c02703c96c" popoup={true} />
+  <EditComponent isLoading={isLoading} setisLoading={setisLoading} ids="6a18bc103b36e3c02703c96c" popoup={true} setshowPopup={setshowPopup}/>
     </div>
   </div>
 )}

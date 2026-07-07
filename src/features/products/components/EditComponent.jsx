@@ -15,7 +15,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 
 
 
-export default function EditComponent({ isLoading, setisLoading , ids , popoup}) {
+export default function EditComponent({ isLoading, setisLoading , ids , popoup ,setshowPopup}) {
   const params = useParams() 
   const id = ids ? ids : params.id
   const { register, watch, reset, setValue, handleSubmit } = useForm();
@@ -74,6 +74,8 @@ export default function EditComponent({ isLoading, setisLoading , ids , popoup})
     setstatus(true)
     UpdateProduct(id, newData).then(() => {
       navigate("/products")
+      setshowPopup(false)
+      setisLoading(true)
       console.log("product have been updated");
     });
   };
@@ -423,7 +425,7 @@ export default function EditComponent({ isLoading, setisLoading , ids , popoup})
                 type="submit"
                 className="p-5 mt-10 rounded-2xl ml-5 bg-violet-800"
                 disabled={status}
-                value="Save Changes"
+                value={status ? "Saving ...":"Save Changes"}
               />
             </div>
           )}
