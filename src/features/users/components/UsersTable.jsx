@@ -94,7 +94,7 @@ function UsersTable({ searchTerm }) {
 
   return (
     <div
-      className="rounded-3xl mt-6 overflow-hidden border shadow-xl transition-[background-color,border-color,box-shadow] duration-500 ease-in-out"
+      className="rounded-3xl mt-6 overflow-x-scrol border shadow-xl transition-[background-color,border-color,box-shadow] duration-500 ease-in-out"
       style={{
         background: "var(--surface)",
         borderColor: "var(--border)",
@@ -247,7 +247,7 @@ function UsersTable({ searchTerm }) {
                         e.currentTarget.style.color = "var(--primary)";
                       }}
                     >
-                      <FiEdit2 size={20} />
+                      <FiEdit2 className="text-sm sm:text-base md:text-lg" />
                     </button>
                     <button
                       onClick={() => handleToggleRole(user)}
@@ -265,7 +265,7 @@ function UsersTable({ searchTerm }) {
                         e.currentTarget.style.color = "var(--success)";
                       }}
                     >
-                      <FiShield size={20} />
+                      <FiShield className="text-sm sm:text-base md:text-lg" />
                     </button>
                     <button
                       onClick={() => handleDeleteUser(user._id)}
@@ -283,7 +283,7 @@ function UsersTable({ searchTerm }) {
                         e.currentTarget.style.color = "var(--danger)";
                       }}
                     >
-                      <FiTrash2 size={20} />
+                      <FiTrash2 className="text-sm sm:text-base md:text-lg" />
                     </button>
                   </div>
                 </td>
