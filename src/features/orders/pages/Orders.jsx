@@ -3,6 +3,7 @@ import { FiSearch } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
 import { getAdminOrders, updateOrderStatus } from "../orders.service";
 import defaultAvatar from "../../../assets/default-avatar.jpg";
+import Drawer from "../../../components/ui/Drawer";
 
 const statusOptions = [
   "All statuses",
@@ -389,15 +390,9 @@ function Orders() {
 )}
 </div>
 
-      {selectedOrder && (
-  <div
-    onClick={() => setSelectedOrder(null)}
-    className="fixed inset-0 z-50 flex justify-end bg-black/40 text-sm"
-  >
-    <div
-      onClick={(e) => e.stopPropagation()}
-      className="h-full w-full overflow-y-auto bg-[var(--card)] p-4 sm:w-[500px] sm:p-6"
-    >
+      <Drawer isOpen={!!selectedOrder} onClose={() => setSelectedOrder(null)}>
+        {selectedOrder && (
+          <>
       <div className="mb-5 flex items-start justify-between text-sm">
         <div>
           <p className="text-xs font-semibold tracking-[0.13em] text-[var(--text-muted)]">
@@ -544,9 +539,9 @@ function Orders() {
 </div>
               </>
             )}
-          </div>
-        </div>
-      )}
+            </>
+        )}
+          </Drawer>
     </div>
   );
 }
