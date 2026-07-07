@@ -24,7 +24,6 @@ function Dashboard() {
 
   return (
     <div className="pt-4">
-      <StatusCardsSection dashdata={dashboard} />
     <div>
       <AdminOverview />
 
