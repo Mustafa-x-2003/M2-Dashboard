@@ -39,7 +39,7 @@
   ========================== */
 
   --success: #16A34A;
-  --success-light: #DCFCE7;
+  --success-light: #b7ffd0;
 
   --warning: #F59E0B;
   --warning-light: #FEF3C7;
@@ -72,13 +72,13 @@
   ========================== */
 
   --button-secondary: #F1F5F9;
-  --button-secondary-hover: #E2E8F0;
+  --button-secondary-hover: #f1f1f1;
 
   /* =========================
       TABLE
   ========================== */
 
-  --table-header: #F8FAFC;
+  --table-header: #e4edf8;
   --table-hover: #F8FAFC;
   --table-striped: #F9FAFB;
 
@@ -170,13 +170,13 @@
   ========================== */
 
   --button-secondary: #1E293B;
-  --button-secondary-hover: #334155;
+  --button-secondary-hover: #1F2937;
 
   /* =========================
       TABLE
   ========================== */
 
-  --table-header: #0F172A;
+  --table-header: #0f1a38;
   --table-hover: #1E293B;
   --table-striped: #111827;
 
@@ -193,6 +193,7 @@
   ========================== */
 
   --overlay: rgba(0,0,0,.65);
+
 }
 @keyframes zoomIn {
   from {
@@ -205,4 +206,29 @@
     transform: scale(1) translateY(0);
   }
 
+}
+
+/*==============================
+
+================================
+*/
+
+
+@utility  bg-card {
+
+  @apply bg-gray-900   lg:border lg:rounded-4xl lg:border-white/10 
+}
+
+@utility  inputDesign {
+
+  @apply w-full bg-gray-800 p-5 rounded-[10px] text-xl text-white font-thin 
+}
+
+@utility  labelDesign {
+
+  @apply flex flex-col gap-5  
+}
+@utility  skeltonDesign {
+
+  @apply mb-7 p-1 rounded-2xl border border-white/5 
 }
