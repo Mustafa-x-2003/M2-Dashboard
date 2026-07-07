@@ -27,7 +27,7 @@ export default function DashboardLayout() {
       <div className="flex-1 lg:ml-70">
         <Navbar />
 
-        <main className="mt-20 min-h-[calc(100vh-80px)] overflow-y-auto p-1 transition-all duration-300">
+        <main className="mt-20 min-h-[calc(100vh-80px)] w-screen lg:w-[calc(100vw-280px)] overflow-auto p-1 transition-colors duration-300">
           <Outlet />
         </main>
       </div>
