@@ -12,6 +12,7 @@ export default function Products({ onEdit, onDelete, onView, AddToCart , addProd
             <ProductsStatesLIst products={result}/>
             <SearchBar query={query} setQuery={setQuery} loading={loading} cat={cat} setCat={setCat} products={result} />
             <ProductList
+                query={query}
                 products={result}
                 loading={loading}
                 error={error}

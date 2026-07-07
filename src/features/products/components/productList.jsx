@@ -1,7 +1,7 @@
 import ProductCard from "./productCard"
 import { HiOutlineEmojiSad } from "react-icons/hi"
 
-export default function ProductList({ products, loading, error, isUser, onEdit, onDelete, onView, AddToCart }) {
+export default function ProductList({ query , products, loading, error, isUser, onEdit, onDelete, onView, AddToCart }) {
 
     if (loading) return (
         <div className="flex flex-col items-center justify-center py-24 gap-4">
@@ -28,7 +28,7 @@ export default function ProductList({ products, loading, error, isUser, onEdit, 
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-8">
-            {products.map(product => (
+            {products.filter(product => product.name.toLowerCase().startsWith(query.toLowerCase())).map(product => (
                 <ProductCard
                     key={product._id}
                     product={product}
