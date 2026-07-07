@@ -8,7 +8,7 @@ import { FiUsers } from "react-icons/fi";
 import { FiShoppingBag } from "react-icons/fi";
 const StatusCardsSection=({dashdata})=>{
     return(
-    <div className="w-full mx-auto grid grid-cols-3 grid-rows-2 gap-7">
+    <div className="w-full mx-auto grid grid-cols-1 grid-rows-6 gap-y-5 gap-x-5 sm:grid-cols-2 sm:grid-rows-3 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-2 xl:grid-cols-3 xl:grid-rows-2">
       <StatsCard title="Total Orders" icon={<FiShoppingBag/>} color="bg-gradient-to-br from-emerald-500 to-teal-500" data={dashdata?.orders?.total??"..."} status="All orders received"/>
       <StatsCard title="Pending Orders" icon={<IoTimeOutline/>} color="bg-gradient-to-br from-orange-500 to-yellow-500" data={dashdata?.orders?.pending} status="Awaiting action"/>
       <StatsCard title="Revenue" icon={<FiDollarSign/>} color="bg-gradient-to-br from-pink-500 to-rose-500" data={`$${dashdata?.revenue?.total}`} status="Total gross revenue"/>
