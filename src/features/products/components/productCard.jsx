@@ -69,13 +69,13 @@ export default function ProductCard({ isUser, product, onEdit, onDelete, onView,
                     {!isUser && (
                         <div className="grid grid-cols-3 gap-1.5">
                             <button
-                                onClick={() => navigate(`/view/${product._id}`)}
+                                onClick={() => navigate(`view/${product._id}`)}
                                 className="flex items-center justify-center gap-1 text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 py-2 rounded-lg transition-all duration-200 active:scale-95"
                             >
                                 <MdOutlineRemoveRedEye className="text-sm" /> View
                             </button>
                             <button
-                                onClick={() => onEdit(product)}
+                                onClick={() =>navigate(`edit/${product._id}`)}
                                 className="flex items-center justify-center gap-1 text-xs font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 py-2 rounded-lg transition-all duration-200 active:scale-95"
                             >
                                 <HiOutlinePencil className="text-sm" /> Edit
