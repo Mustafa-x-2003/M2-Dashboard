@@ -9,7 +9,7 @@ const DashboardOverviewGrid = ({
 }) => {
     return (
         <section
-            className={`rounded-2xl border border-gray-200 bg-white py-2 px-6 shadow-lg w-full ${className}`}
+            className={`h-full rounded-2xl border border-gray-200 bg-white py-2 px-6 shadow-lg w-full ${className}`}
         >
             <div className="flex justify-between items-center">
                 <div>
