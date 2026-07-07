@@ -9,7 +9,7 @@ const DashboardOverviewGrid = ({
 }) => {
     return (
         <section
-            className={`rounded-2xl border border-gray-200 bg-white py-2 px-6 shadow-lg w-full ${className}`}
+            className={`h-full rounded-2xl border transition-all duration-300 border-[var(--border)] bg-[var(--background)] py-2 px-6 shadow-lg w-full ${className}`}
         >
             <div className="flex justify-between items-center">
                 <div>
@@ -17,7 +17,7 @@ const DashboardOverviewGrid = ({
                         {title}
                     </h5>
 
-                    <h2 className="text-lg md:text-xl mb-4 mt-2 font-semibold">
+                    <h2 className="text-lg md:text-xl text-[var(--text)] transition-all duration-300 mb-4 mt-2 font-semibold">
                         {subtitle}
                     </h2>
                 </div>
