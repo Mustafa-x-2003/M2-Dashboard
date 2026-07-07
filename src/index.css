@@ -72,7 +72,7 @@
   ========================== */
 
   --button-secondary: #F1F5F9;
-  --button-secondary-hover: #E2E8F0;
+  --button-secondary-hover: #f1f1f1;
 
   /* =========================
       TABLE
@@ -170,7 +170,7 @@
   ========================== */
 
   --button-secondary: #1E293B;
-  --button-secondary-hover: #334155;
+  --button-secondary-hover: #1F2937;
 
   /* =========================
       TABLE
@@ -193,6 +193,7 @@
   ========================== */
 
   --overlay: rgba(0,0,0,.65);
+
 }
 @keyframes zoomIn {
   from {

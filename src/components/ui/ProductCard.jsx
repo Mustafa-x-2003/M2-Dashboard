@@ -5,15 +5,15 @@ const ProductCard = ({ image, name, subtitle }) => {
       <img
         src={image}
         alt={name}
-        className="w-14 h-14 md:w-15 md:h-15 rounded-2xl object-cover"
+        className="w-14 h-14 bg-[var(--border)] md:w-15 md:h-15 rounded-2xl object-cover"
       />
 
       <div>
-        <h2 className="text-base font-semibold text-slate-900">
+        <h2 className="text-base font-semibold transition-all duration-300 text-[var(--text)]">
           {name}
         </h2>
 
-        <p className="text-xs text-gray-500">
+        <p className="text-xs transition-all duration-300 text-[var(--text-secondary)]">
           {subtitle}
         </p>
       </div>
