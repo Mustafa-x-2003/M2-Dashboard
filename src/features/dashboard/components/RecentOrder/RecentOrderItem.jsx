@@ -32,13 +32,13 @@ const RecentOrderItem = ({ order }) => {
             {order.items?.[0]?.name} • {date}
           </p>
         </div>
-        <div className=" flex sm:justify-between justify-start items-center gap-4">
+        <div className=" flex xs:justify-between  items-center flex-wrap mt-3  gap-3 md:gap-6">
           <p
             className={`  ${statusColors[order.status] || "bg-gray-100 text-gray-600"}  rounded-full md:px-4 py-1 px-2  md:text-sm text-xs`}
           >
             {order.status}
           </p>
-          <p className="md:text-sm text-xs text-gray-600 ">${price}</p>
+          <p className="md:text-sm text-xs text-gray-400 ">${price}</p>
         </div>
       </div>
     </>
