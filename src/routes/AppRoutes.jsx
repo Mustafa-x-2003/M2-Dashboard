@@ -1,4 +1,4 @@
-import { Routes, Route,Navigate
+import {  Routes, Route,Navigate
  } from "react-router";
 
 import Login from "../features/auth/pages/LoginPage";

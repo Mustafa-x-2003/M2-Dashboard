@@ -24,7 +24,7 @@ export const handleUpload = async (files) => {
    const  result  = await Promise.all(uploads);
    
     return result.map((image) => ({
+     public_id: image.public_id,
     url: image.secure_url,
-    public_id: image.public_id,
   }));
 };

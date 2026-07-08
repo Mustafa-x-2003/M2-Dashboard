@@ -33,7 +33,7 @@ function Products() {
     
 </div>
 
-  <EditComponent isLoading={isLoading} setisLoading={setisLoading} ids="6a18bc103b36e3c02703c96c" popoup={true} setshowPopup={setshowPopup}/>
+  <EditComponent isLoading={isLoading} setisLoading={setisLoading} ids="6a1b687a8be75452394dc686" popoup={true} setshowPopup={setshowPopup}/>
     </div>
   </div>
 )}
@@ -42,7 +42,7 @@ function Products() {
 
 
 <button className="text-white bg-sky-700 p-2 rounded-3xl ml-5" onClick={()=>{
-navigate("edit/6a18bc103b36e3c02703c96c")  // replace this static id with your id variable
+navigate("edit/6a1b687a8be75452394dc686")  // replace this static id with your id variable
 }}>Edit Page</button>
 
 

@@ -1,15 +1,17 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState , useContext } from "react";
 import EditComponent from "../components/EditComponent";
 import { Link } from "react-router";
 import Skeleton from "react-loading-skeleton";
 import { LuPackage2 } from "react-icons/lu";
 import { FaArrowLeft } from "react-icons/fa";
+import ThemeContext from "../../../context/ThemeContext"
+
 export default function Editpage() {
   const [isLoading, setisLoading] = useState(true);
-
+    const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <section className="  w-full mt-15 2xl:px-8   ml-auto  flex flex-col ">
-      <div className=" flex gap-y-5 sm:flex-col 2xl:flex-row  justify-between bg-card text-zinc-100 p-7 2xl:p-10 pt-15 pb-15 ">
+      <div className=" flex gap-y-5 sm:flex-col 2xl:flex-row  justify-between bg-card bg-gray-900 text-zinc-50 shadow-2xl p-7 2xl:p-10 pt-15 pb-15 ">
         {isLoading ? (
           <Skeleton width={500} className="skeltonDesign" count={4} />
         ) : (
@@ -60,7 +62,7 @@ export default function Editpage() {
           </div>
         )}
       </div>
-      <EditComponent isLoading={isLoading} setisLoading={setisLoading} />
+      <EditComponent isLoading={isLoading} setisLoading={setisLoading}  theme={theme}/>
     </section>
   );
 }

@@ -215,17 +215,18 @@
 
 @utility  bg-card {
 
-  @apply bg-gray-900   lg:border lg:rounded-4xl lg:border-white/10 
+  @apply bg-[var(--card)]  text-[var(--text)] lg:border lg:rounded-4xl lg:border-white/10 
 }
+
 
 @utility  inputDesign {
 
-  @apply w-full bg-gray-800 p-5 rounded-[10px] text-xl text-white font-thin 
+  @apply w-full bg-[var(--input-bg)] p-5 rounded-[15px] text-xl text-[var(--text)] font-thin  border border-[var(--input-border)] focus:border-[var(----input-focus)]
 }
 
 @utility  labelDesign {
 
-  @apply flex flex-col gap-5  
+  @apply flex flex-col gap-5  text-[var(--text)] font-semibold
 }
 @utility  skeltonDesign {
 
