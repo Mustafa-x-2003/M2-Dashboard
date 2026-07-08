@@ -33,20 +33,20 @@
 
   --primary: #2563EB;
   --primary-hover: #1D4ED8;
-  --primary-light: #DBEAFE;
+  --primary-light: #c0d7f5;
 
   /* =========================
       STATUS
   ========================== */
 
   --success: #16A34A;
-  --success-light: #b7ffd0;
+  --success-light: #9df0ba;
 
   --warning: #F59E0B;
   --warning-light: #FEF3C7;
 
   --danger: #DC2626;
-  --danger-light: #FEE2E2;
+  --danger-light: #ffd0d0;
 
   --info: #0EA5E9;
   --info-light: #E0F2FE;
@@ -129,7 +129,7 @@
       PRIMARY
   ========================== */
 
-  --primary: #3B82F6;
+  --primary: #1e58b6;
   --primary-hover: #60A5FA;
   --primary-light: rgba(59,130,246,.15);
 
@@ -137,13 +137,13 @@
       STATUS
   ========================== */
 
-  --success: #22C55E;
+  --success: #117f39;
   --success-light: rgba(34,197,94,.15);
 
   --warning: #FBBF24;
   --warning-light: rgba(251,191,36,.15);
 
-  --danger: #EF4444;
+  --danger: #ca2f2f;
   --danger-light: rgba(239,68,68,.15);
 
   --info: #38BDF8;
