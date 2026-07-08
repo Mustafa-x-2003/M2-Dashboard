@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaUserPlus } from 'react-icons/fa';
 import { toast, Toaster } from 'react-hot-toast';
-import { addUser } from '../services/addUser';
+import { addUser } from '../services/adduser';
 
 const AddUserForm = ({ onClose }) => {
   const placeholders = {
