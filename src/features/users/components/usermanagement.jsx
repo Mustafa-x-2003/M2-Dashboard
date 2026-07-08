@@ -8,7 +8,7 @@ const UserManager = ({ searchTerm, setSearchTerm }) => {
 
   return (
     <div className="space-y-6">
-      <div className="bg-[var(--card)] p-6 rounded-3xl border border-[var(--border)] shadow-xl">
+      <div className="bg-[var(--card)] p-6 rounded-3xl border border-[var(--border)] shadow-xl transition-colors duration-300">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-500">User Management</p>
