@@ -22,7 +22,7 @@ function Products() {
 {/* You must pass the id of product // replace it place */}
       <button className="bg-sky-700 text-white p-2 rounded-3xl" onClick={()=>handleOpenPopUp("6a18bc103b36e3c02703c96c")}>Test Edit Popup</button>
 {showPopup &&(
-  <div className='  backdrop-blur-sm w-[100%]  h-[91vh]  absolute left-0 top-25'>
+  <div className='  backdrop-blur-sm w-[100%]  h-[91vh]  absolute z-1500 left-0 top-25'>
     <div className=' w-[85%] h-[98%] m-auto bg-card overflow-y-auto'>
 
 <div className='fixed text-2xl text-white  items-center flex justify-between z-10 w-[85%] rounded-t-2xl  h-10 p-15 bg-gray-800'>
