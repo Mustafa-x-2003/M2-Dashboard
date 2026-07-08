@@ -29,7 +29,7 @@ function Dashboard() {
 
         <div className="pt-8">
           <StatusCardsSection dashdata={dashboard} />
-          <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-5 mt-6">
+          <div className="grid grid-cols-1 xl:grid-cols-[1.3fr_1fr] gap-5 mt-6">
             <OrderStatusSection dashdata={dashboard} />
             <TopProduct dashboard={dashboard} />
           </div>

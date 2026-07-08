@@ -10,7 +10,7 @@ const DashboardOverviewGrid = ({
     return (
         <section
             className={`h-full rounded-2xl border transition-all duration-300 border-[var(--border)] bg-[var(--background)] py-2 px-6 shadow-lg w-full ${className}`}
-        >
+>
             <div className="flex justify-between items-center">
                 <div>
                     <h5 className="md:tracking-[6px] uppercase text-cyan-400 md:text-sm text-sm mt-2">
