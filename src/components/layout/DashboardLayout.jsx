@@ -25,10 +25,10 @@ export default function DashboardLayout() {
         <Sidebar />
       </Drawr>
 
-      <div className="min-w-0 flex-1 lg:ml-72">
+      <div className="min-w-0 w-screen lg:w-[calc(100vw-280px)] flex-1 lg:ml-72">
         <Navbar />
 
-        <main className="mt-20 min-h-[calc(100vh-85px)] w-[100%] lg:w-[calc(100vw-280px)] overflow-auto p-1 transition-colors duration-300">
+        <main className="mt-20 min-h-[calc(100vh-80px)]  overflow-auto p-1 transition-colors duration-300">
           <Outlet />
         </main>
       </div>
