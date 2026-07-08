@@ -11,8 +11,10 @@ export const login = async (email, password) => {
 
 
 export const getCurrentUser = async () => {
-  const { data } = await axiosInstance.get("/auth/me");
+  const { data } = await axiosInstance.get("auth/me");
+
   return data;
+  
 };
 
 export const logout = async () => {
