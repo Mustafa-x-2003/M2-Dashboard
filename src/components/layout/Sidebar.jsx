@@ -23,7 +23,7 @@ const links = [
 function Sidebar() {
   return (
     
-      <ul className=" w-full  p-5 flex flex-col   h-[50%]   justify-between">
+      <ul className=" w-full  p-5 flex flex-col   h-[43%]   justify-between">
         {links.map((link) => {
           return (
             <SidebarItem
