@@ -6,10 +6,10 @@ function Users() {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <div className="w-full h-full p-10">
-      <UserManager searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+    <div className="w-full min-h-screen p-4 sm:p-6 lg:p-10">
+      <UserManager searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <StatsGrid />
-      <UsersTable searchTerm={searchTerm}/>
+      <UsersTable searchTerm={searchTerm} />
     </div>
   );
 }
