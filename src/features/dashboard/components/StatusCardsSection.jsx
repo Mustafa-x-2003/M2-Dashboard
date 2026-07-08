@@ -8,14 +8,55 @@ import { FiUsers } from "react-icons/fi";
 import { FiShoppingBag } from "react-icons/fi";
 const StatusCardsSection=({dashdata})=>{
     return(
-    <div className="w-full mx-auto grid grid-cols-1 grid-rows-6 gap-y-5 gap-x-5 sm:grid-cols-2 sm:grid-rows-3 md:grid-cols-2 md:grid-rows-3 lg:grid-cols-2 xl:grid-cols-3 xl:grid-rows-2">
-      <StatsCard title="Total Orders" icon={<FiShoppingBag/>} color="bg-gradient-to-br from-emerald-500 to-teal-500" data={dashdata?.orders?.total??"..."} status="All orders received"/>
-      <StatsCard title="Pending Orders" icon={<IoTimeOutline/>} color="bg-gradient-to-br from-orange-500 to-yellow-500" data={dashdata?.orders?.pending} status="Awaiting action"/>
-      <StatsCard title="Revenue" icon={<FiDollarSign/>} color="bg-gradient-to-br from-pink-500 to-rose-500" data={`$${dashdata?.revenue?.total}`} status="Total gross revenue"/>
-      <StatsCard title="This Month" icon={<FaCartShopping/>} color="bg-gradient-to-br from-cyan-500 to-sky-500" data={`$${dashdata?.revenue?.thisMonth}`} status="Monthly sales target"/>
-      <StatsCard title="Top Product" icon={<BsBoxSeam/>} color="bg-gradient-to-br from-violet-500 to-fuchsia-500" data={dashdata?.topProducts?.[0]?.name} status={`${dashdata?.topProducts?.[0]?.totalSold} sold`}/>
-      <StatsCard title="Users" icon={<FiUsers/>} color="bg-gradient-to-br from-slate-400 to-slate-600" data={dashdata?.totalCustomers} status="Registered customers"/>
-    </div>
+    <div className="mx-auto grid w-full grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+  <StatsCard
+    title="Total Orders"
+    icon={<FiShoppingBag />}
+    color="bg-gradient-to-br from-emerald-500 to-teal-500"
+    data={dashdata?.orders?.total ?? "..."}
+    status="All orders received"
+  />
+
+  <StatsCard
+    title="Pending Orders"
+    icon={<IoTimeOutline />}
+    color="bg-gradient-to-br from-orange-500 to-yellow-500"
+    data={dashdata?.orders?.pending}
+    status="Awaiting action"
+  />
+
+  <StatsCard
+    title="Revenue"
+    icon={<FiDollarSign />}
+    color="bg-gradient-to-br from-pink-500 to-rose-500"
+    data={`$${dashdata?.revenue?.total}`}
+    status="Total gross revenue"
+  />
+
+  <StatsCard
+    title="This Month"
+    icon={<FaCartShopping />}
+    color="bg-gradient-to-br from-cyan-500 to-sky-500"
+    data={`$${dashdata?.revenue?.thisMonth}`}
+    status="Monthly sales target"
+  />
+
+  <StatsCard
+    title="Top Product"
+    icon={<BsBoxSeam />}
+    color="bg-gradient-to-br from-violet-500 to-fuchsia-500"
+    data={dashdata?.topProducts?.[0]?.name}
+    status={`${dashdata?.topProducts?.[0]?.totalSold} sold`}
+  />
+
+  <StatsCard
+    title="Users"
+    icon={<FiUsers />}
+    color="bg-gradient-to-br from-slate-400 to-slate-600"
+    data={dashdata?.totalCustomers}
+    status="Registered customers"
+  />
+</div>
     )
 }
 export default StatusCardsSection
