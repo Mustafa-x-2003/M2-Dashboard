@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaUsers, FaUserShield, FaUserFriends, FaUserCheck } from 'react-icons/fa';
-import StatCard from './StatCard'; 
+import StatCard from './statcard'; 
 import { getAllUsers } from '../services/userStatus'; 
 const StatsGrid = () => {
   const [statsData, setStatsData] = useState({ total: 0, admins: 0, customers: 0, verified: 0 });
