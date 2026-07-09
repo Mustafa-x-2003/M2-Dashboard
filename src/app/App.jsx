@@ -1,11 +1,15 @@
-import { AuthProvider } from "../context/AuthContext";
-import AppRoutes from "../routes/AppRoutes";
 
+import AppRoutes from "../routes/AppRoutes";
+import Providers from "./providers/Providers";
+import { SkeletonTheme } from "react-loading-skeleton";
 function App() {
   return (
-    <AuthProvider>
+    <Providers>
+       <SkeletonTheme baseColor="#444" highlightColor="#202020">
       <AppRoutes />
-    </AuthProvider>
+      </SkeletonTheme>
+    </Providers>
+   
   );
 }
 

@@ -54,8 +54,6 @@ export default function AddProductForm() {
     const trimmed = tagInput.trim();
     if (trimmed && !tags.includes(trimmed)) {
       dispatch({ type: 'ADD_TAG', payload: trimmed });
-      // setValue is not strictly necessary for tags anymore because submitProduct pulls from state.tags,
-      // but keeping it if there's external reliance on form data. (Better to just rely on context tags)
     }
     setTagInput('');
   };
@@ -121,12 +119,12 @@ export default function AddProductForm() {
           </label>
         )}
 
-        <div className="mt-6 rounded-3xl border border-emerald-400/20 bg-emerald-500/5 p-4 text-sm text-emerald-100">
-          <div className="flex items-center gap-2 font-semibold">
-            <BsStars className="h-4 w-4" />
+        <div className="mt-6 rounded-3xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800 dark:border-emerald-400/20 dark:bg-emerald-500/5 dark:text-emerald-100">
+          <div className="flex items-center gap-2 font-semibold text-emerald-900 dark:text-emerald-50">
+            <BsStars className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
             Senior UX
           </div>
-          <p className="mt-1 text-emerald-100/90">Optimized product creation experience with responsive design and smooth interactions.</p>
+          <p className="mt-1 text-emerald-700 dark:text-emerald-100/90">Optimized product creation experience with responsive design and smooth interactions.</p>
         </div>
       </section>
 

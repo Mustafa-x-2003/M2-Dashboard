@@ -1,4 +1,18 @@
-import axiosInstance from '../../../services/api/interceptors';
+import axiosInstance from "../../../services/api/interceptors";
+import { ENDPOINTS } from "../../../services/endpoints";
+
+
+export const getAllProducts = (signal) =>
+  axiosInstance.get(ENDPOINTS.PRODUCTS.BASE, { signal });
+export const getProductById = (id) =>
+  axiosInstance.get(ENDPOINTS.PRODUCTS.BY_ID(id));
+export const searchProducts = (params, signal) =>
+  axiosInstance.get(ENDPOINTS.PRODUCTS.SEARCH, { params, signal });
+export const updateProduct = (id, data) =>
+  axiosInstance.patch(ENDPOINTS.PRODUCTS.UPDATE(id), data);
+export const deleteProduct = (id) =>
+  axiosInstance.delete(ENDPOINTS.PRODUCTS.BY_ID(id));
+
 
 export async function createProduct(fields, tags, images) {
   const formData = new FormData();
@@ -32,7 +46,7 @@ export async function createProduct(fields, tags, images) {
   // Images (File objects)
   images.forEach((file) => formData.append('images', file));
 
-  const response = await axiosInstance.post('/products', formData, {
+  const response = await axiosInstance.post(ENDPOINTS.PRODUCTS.BASE, formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
 

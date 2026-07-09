@@ -4,7 +4,7 @@ import AddProductsHeader from '../components/AddProductsHeader';
 import AddProductForm from '../components/AddProductForm';
 import { AddProductProvider } from '../context/AddProductContext';
 
-export default function AddProduct() {
+export default function AddProductPage() {
   const navigate = useNavigate();
 
   return (
