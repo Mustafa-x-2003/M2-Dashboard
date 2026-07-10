@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import {
   getUsers,
   updateUser,
@@ -9,7 +10,7 @@ import { FiEdit2, FiShield, FiTrash2 } from "react-icons/fi";
 import toast from "react-hot-toast";
 import EditUserModal from "./EditUserModal";
 
-function UsersTable({ searchTerm }) {
+function UsersTable({ searchTerm, setPageLoading, isHiddenWhileLoading }) {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -20,11 +21,15 @@ function UsersTable({ searchTerm }) {
 
   const fetchUsers = async () => {
     try {
+      setPageLoading?.(true);
+
       const data = await getUsers();
       setUsers(data.users);
     } catch (error) {
-      toast.error("Failed to update user");
+      toast.error("Failed to load users");
       console.log(error);
+    } finally {
+      setPageLoading?.(false);
     }
   };
 
@@ -38,12 +43,16 @@ function UsersTable({ searchTerm }) {
 
   const filteredUsers = users.filter((user) => {
     const term = searchTerm?.toLowerCase() || "";
+
     return (
       user.username?.toLowerCase().includes(term) ||
       user.email?.toLowerCase().includes(term)
     );
   });
 
+if (isHiddenWhileLoading) {
+  return null;
+}
   const handleToggleRole = async (user) => {
     const newRole = user.role === "admin" ? "customer" : "admin";
 
