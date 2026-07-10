@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import {
-  getUsers,
   updateUser,
   toggleUserRole,
   deleteUser,
@@ -10,28 +9,16 @@ import { FiEdit2, FiShield, FiTrash2 } from "react-icons/fi";
 import toast from "react-hot-toast";
 import EditUserModal from "./EditUserModal";
 
-function UsersTable({ searchTerm, setPageLoading, isHiddenWhileLoading }) {
-  const [users, setUsers] = useState([]);
+function UsersTable({
+  searchTerm,
+  setPageLoading,
+  isHiddenWhileLoading,
+  users,
+  setUsers,
+  fetchUsers,
+}) {
   const [selectedUser, setSelectedUser] = useState(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
-  const fetchUsers = async () => {
-    try {
-      setPageLoading?.(true);
-
-      const data = await getUsers();
-      setUsers(data.users);
-    } catch (error) {
-      toast.error("Failed to load users");
-      console.log(error);
-    } finally {
-      setPageLoading?.(false);
-    }
-  };
 
   const handleSave = async (updatedData) => {
     await updateUser(selectedUser._id, updatedData);
@@ -50,9 +37,9 @@ function UsersTable({ searchTerm, setPageLoading, isHiddenWhileLoading }) {
     );
   });
 
-if (isHiddenWhileLoading) {
-  return null;
-}
+  if (isHiddenWhileLoading) {
+    return null;
+  }
   const handleToggleRole = async (user) => {
     const newRole = user.role === "admin" ? "customer" : "admin";
 
