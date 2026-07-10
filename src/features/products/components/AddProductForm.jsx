@@ -66,22 +66,22 @@ export default function AddProductForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="grid gap-8 xl:grid-cols-[0.95fr_1.05fr]">
       
       {/* SECTION A: Gallery */}
-      <section className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900">
+      <section className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900 transition-colors duration-300">
         <div className="flex items-center gap-3">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400">
             <MdOutlineAddPhotoAlternate size={24} />
           </div>
           <div>
-            <h3 className="text-xl font-black text-slate-900 dark:text-white">Gallery</h3>
-            <p className="text-sm text-slate-500 dark:text-slate-300">Upload multiple images and preview instantly.</p>
+            <h3 className="text-xl font-black text-slate-900 dark:text-white transition-colors duration-300">Gallery</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-300 transition-colors duration-300">Upload multiple images and preview instantly.</p>
           </div>
         </div>
 
         {images.length > 0 && (
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {images.map((img, index) => (
-              <article key={index} className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm dark:border-slate-800 dark:bg-slate-950/80">
-                <div className="flex h-48 items-center justify-center bg-white dark:bg-slate-950/70">
+              <article key={index} className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm dark:border-slate-800 dark:bg-slate-950/80 transition-colors duration-300">
+                <div className="flex h-48 items-center justify-center bg-white dark:bg-slate-950/70 transition-colors duration-300">
                   <img src={URL.createObjectURL(img)} alt={`Preview ${index}`} className="h-full w-full object-cover" />
                 </div>
                 <button
@@ -106,7 +106,7 @@ export default function AddProductForm() {
             className="mt-6 flex cursor-pointer flex-col items-center justify-center rounded-3xl border-2 border-dashed border-cyan-400/30 bg-cyan-500/5 p-8 text-center transition hover:bg-cyan-500/10"
           >
             <FiImage className="mb-3 text-cyan-400 h-6 w-6" />
-            <p className="font-semibold text-slate-800 dark:text-white">Upload images</p>
+            <p className="font-semibold text-slate-800 dark:text-white transition-colors duration-300">Upload images</p>
             <p className="mt-1 text-sm text-slate-500 dark:text-slate-300">PNG, JPG, WEBP • multiple files supported</p>
             <input 
               hidden 
@@ -119,64 +119,64 @@ export default function AddProductForm() {
           </label>
         )}
 
-        <div className="mt-6 rounded-3xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800 dark:border-emerald-400/20 dark:bg-emerald-500/5 dark:text-emerald-100">
-          <div className="flex items-center gap-2 font-semibold text-emerald-900 dark:text-emerald-50">
-            <BsStars className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+        <div className="mt-6 rounded-3xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800 dark:border-emerald-400/20 dark:bg-emerald-500/5 dark:text-emerald-100 transition-colors duration-300">
+          <div className="flex items-center gap-2 font-semibold text-emerald-900 dark:text-emerald-50 transition-colors duration-300">
+            <BsStars className="h-4 w-4 text-emerald-600 dark:text-emerald-400 transition-colors duration-300" />
             Senior UX
           </div>
-          <p className="mt-1 text-emerald-700 dark:text-emerald-100/90">Optimized product creation experience with responsive design and smooth interactions.</p>
+          <p className="mt-1 text-emerald-700 dark:text-emerald-100/90 transition-colors duration-300">Optimized product creation experience with responsive design and smooth interactions.</p>
         </div>
       </section>
 
       {/* SECTION B: Product Metadata */}
-      <section className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900">
+      <section className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900 transition-colors duration-300">
         <div className="grid gap-5">
           <label className="block">
-            <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Product Name</span>
+            <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors duration-300">Product Name</span>
             <input
               type="text"
               placeholder="iPhone 16 Pro"
-              className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+              className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition duration-300 focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
               {...register('name', { required: true })}
             />
           </label>
 
           <label className="block">
-            <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Short Description</span>
+            <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors duration-300">Short Description</span>
             <input
               type="text"
               placeholder="Minimum 10 characters"
-              className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+              className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition duration-300 focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
               {...register('shortDescription', { required: true })}
             />
           </label>
 
           <label className="block">
-            <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Description</span>
+            <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors duration-300">Description</span>
             <textarea
               rows={5}
               placeholder="Minimum 20 characters"
-              className="w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 py-4 outline-none transition focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+              className="w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 py-4 outline-none transition duration-300 focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
               {...register('description', { required: true })}
             />
           </label>
 
           <div className="grid gap-5 md:grid-cols-2">
             <label className="block">
-              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Price</span>
+              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors duration-300">Price</span>
               <input
                 type="number"
                 placeholder="0.00"
-                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition duration-300 focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                 {...register('price', { required: true, min: 0 })}
               />
             </label>
             <label className="block">
-              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Discount Price</span>
+              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors duration-300">Discount Price</span>
               <input
                 type="number"
                 placeholder="0.00"
-                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition duration-300 focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                 {...register('discountPrice', { min: 0 })}
               />
             </label>
@@ -184,20 +184,20 @@ export default function AddProductForm() {
 
           <div className="grid gap-5 md:grid-cols-2">
             <label className="block">
-              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Stock</span>
+              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors duration-300">Stock</span>
               <input
                 type="number"
                 placeholder="0"
-                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition duration-300 focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                 {...register('stock', { required: true, min: 0 })}
               />
             </label>
             <label className="block">
-              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">SKU</span>
+              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors duration-300">SKU</span>
               <input
                 type="text"
                 placeholder="PROD-123"
-                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition duration-300 focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                 {...register('sku')}
               />
             </label>
@@ -205,9 +205,9 @@ export default function AddProductForm() {
 
           <div className="grid gap-5 md:grid-cols-2">
             <label className="block">
-              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Category</span>
+              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors duration-300">Category</span>
               <select
-                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition duration-300 focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                 {...register('category', { required: true })}
               >
                 <option value="">Select Category</option>
@@ -218,29 +218,29 @@ export default function AddProductForm() {
               </select>
             </label>
             <label className="block">
-              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Subcategory</span>
+              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors duration-300">Subcategory</span>
               <input
                 type="text"
                 placeholder="e.g. Smartphones"
-                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition duration-300 focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                 {...register('subcategory')}
               />
             </label>
           </div>
 
           <label className="block">
-            <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Brand</span>
+            <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors duration-300">Brand</span>
             <input
               type="text"
               placeholder="e.g. Apple"
-              className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+              className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-100 px-5 outline-none transition duration-300 focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
               {...register('brand')}
             />
           </label>
 
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/80">
+          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/80 transition-colors duration-300">
             <label className="block">
-              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Tags</span>
+              <span className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200 transition-colors duration-300">Tags</span>
               <div className="flex gap-3">
                 <input
                   type="text"
@@ -248,7 +248,7 @@ export default function AddProductForm() {
                   onChange={(e) => setTagInput(e.target.value)}
                   onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
                   placeholder="Type a tag and press +"
-                  className="h-14 flex-1 rounded-2xl border border-slate-200 bg-white px-5 outline-none transition focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                  className="h-14 flex-1 rounded-2xl border border-slate-200 bg-white px-5 outline-none transition duration-300 focus:border-cyan-400 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                 />
                 <button
                   type="button"
@@ -263,7 +263,7 @@ export default function AddProductForm() {
             </label>
             <div className="mt-4 flex flex-wrap gap-2">
               {tags.length === 0 ? (
-                <p className="text-sm text-slate-500 dark:text-slate-300">Add one or more tags to organize the product.</p>
+                <p className="text-sm text-slate-500 dark:text-slate-300 transition-colors duration-300">Add one or more tags to organize the product.</p>
               ) : (
                 tags.map((tag, index) => (
                   <button
@@ -281,11 +281,11 @@ export default function AddProductForm() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <label className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-100 px-5 py-4 dark:border-slate-800 dark:bg-slate-950 dark:text-white">
+            <label className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-100 px-5 py-4 dark:border-slate-800 dark:bg-slate-950 dark:text-white transition-colors duration-300">
               <input type="checkbox" {...register('featured')} />
               Featured
             </label>
-            <label className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-100 px-5 py-4 dark:border-slate-800 dark:bg-slate-950 dark:text-white">
+            <label className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-100 px-5 py-4 dark:border-slate-800 dark:bg-slate-950 dark:text-white transition-colors duration-300">
               <input type="checkbox" defaultChecked {...register('isActive')} />
               Active
             </label>
