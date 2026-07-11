@@ -13,6 +13,7 @@ import {
 
 function ViewProductsPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -22,6 +23,8 @@ function ViewProductsPage() {
   const [sliderIndex, setSliderIndex] = useState(0);
 
   useEffect(() => {
+    console.log("ID from URL:", id);
+
     const fetchProduct = async () => {
       try {
         setLoading(true);
@@ -102,7 +105,7 @@ function ViewProductsPage() {
         {/* Back Section - own rounded div with proper spacing above & below */}
         <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-800 rounded-3xl mt-4 mb-3 p-4">
           <button
-            onClick={() => window.history.back()}
+            onClick={() => navigate("/products")}
             className="flex items-center gap-2 text-gray-400 hover:text-gray-300 mb-4 transition cursor-pointer"
           >
             <FiArrowLeft /> Back
