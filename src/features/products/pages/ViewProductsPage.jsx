@@ -35,26 +35,6 @@ function ViewProductsPage() {
         setLoading(false);
       }
     };
-    // const fetchProduct = async () => {
-    //   try {
-    //     setLoading(true);
-
-    //     console.log("Product ID:", id);
-
-    //     const data = await getProductById(id);
-
-    //     console.log("Product Data:", data);
-
-    //     setProduct(data);
-    //     setError(null);
-    //   } catch (err) {
-    //     console.log("FETCH ERROR:", err);
-    //     setError(err.message);
-    //     setProduct(null);
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
 
     fetchProduct();
   }, [id]);
@@ -99,14 +79,10 @@ function ViewProductsPage() {
   const currentSliderImage = images[sliderIndex] || "";
 
   const handlePrevImage = () => {
-    setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-
     setSliderIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-
     setSliderIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
@@ -118,7 +94,7 @@ function ViewProductsPage() {
     <div className="min-h-screen w-full bg-[var(--background)] text-[var(--text)] p-4">
       <div className="max-w-6xl mx-auto rounded-xl">
         {/* Back Section */}
-        {/* <div className="bg-[var(--surface)] rounded-3xl mt-4 mb-3 p-4 border-[0.5px] border-[#ddd] dark:border-0">
+        <div className="bg-[var(--surface)] rounded-3xl mt-4 mb-3 p-4 border-[0.5px] border-[#ddd] dark:border-0">
           <button
             onClick={() => navigate("/products")}
             className="flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text)] mb-4 transition cursor-pointer"
@@ -136,25 +112,6 @@ function ViewProductsPage() {
           <p className="text-[var(--text-secondary)] text-sm ml-8">
             Product details overview
           </p>
-        </div> */}
-
-        {/* Back Section */}
-        <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-800 rounded-3xl mt-4 mb-3 p-4">
-          <button
-            onClick={() => navigate("/products")}
-            className="flex items-center gap-2 text-gray-400 hover:text-gray-300 mb-4 transition cursor-pointer"
-          >
-            <FiArrowLeft />
-            Back
-          </button>
-
-          <div className="flex items-center gap-3 mb-1">
-            <FiEye className="text-md text-gray-300 mt-4" />
-
-            <h1 className="text-3xl font-bold text-white">{product.name}</h1>
-          </div>
-
-          <p className="text-gray-400 text-sm ml-8">Product details overview</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -187,7 +144,7 @@ function ViewProductsPage() {
                     } h-19.5 rounded-2xl cursor-pointer overflow-hidden transition ${
                       index === currentImageIndex
                         ? "ring-2 ring-[var(--primary)]"
-                        : "opacity-60 hover:opacity-100"
+                        : "border-[0.5px] border-[#ddd] dark:border-0 opacity-60 hover:opacity-100"
                     }`}
                   >
                     <img
