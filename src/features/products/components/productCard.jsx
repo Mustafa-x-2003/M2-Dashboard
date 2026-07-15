@@ -101,7 +101,7 @@ export default function ProductCard({ isUser, product, onEdit, onDelete, onView,
                             }`}
                     >
                         <HiShoppingCart className="text-base" />
-                        {clickAdd ? "Remove from Cart" : "Add to Cart"}
+                        {clickAdd ? "added to cart" : "Add to Cart"}
                     </button>
                     )}
                 </div>
