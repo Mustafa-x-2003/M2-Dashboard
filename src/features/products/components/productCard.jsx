@@ -86,8 +86,15 @@ export default function ProductCard({
         <div className="flex flex-col gap-2 mt-auto pt-2 border-t border-gray-50 dark:border-gray-700">
           {!isUser && (
             <div className="grid grid-cols-3 gap-1.5">
-              <button
+              {/* <button
                 onClick={() => navigate(`view/${product._id}`)}
+                className="flex items-center justify-center gap-1 text-xs font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 py-2 rounded-lg transition-all duration-200 active:scale-95"
+              >
+                <MdOutlineRemoveRedEye className="text-sm" /> View
+              </button> */}
+
+              <button
+                onClick={() => navigate(`/products/view/${product._id}`)}
                 className="flex items-center justify-center gap-1 text-xs font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 py-2 rounded-lg transition-all duration-200 active:scale-95"
               >
                 <MdOutlineRemoveRedEye className="text-sm" /> View

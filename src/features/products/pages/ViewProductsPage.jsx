@@ -35,6 +35,26 @@ function ViewProductsPage() {
         setLoading(false);
       }
     };
+    // const fetchProduct = async () => {
+    //   try {
+    //     setLoading(true);
+
+    //     console.log("Product ID:", id);
+
+    //     const data = await getProductById(id);
+
+    //     console.log("Product Data:", data);
+
+    //     setProduct(data);
+    //     setError(null);
+    //   } catch (err) {
+    //     console.log("FETCH ERROR:", err);
+    //     setError(err.message);
+    //     setProduct(null);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
 
     fetchProduct();
   }, [id]);
