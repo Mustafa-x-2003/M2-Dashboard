@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -95,7 +96,9 @@
 
   --overlay: rgba(15, 23, 42, 0.5);
 }
+
 /* ==================================================================== */
+
 .dark {
   /* =========================
       BACKGROUND
@@ -190,6 +193,7 @@
 
   --overlay: rgba(0, 0, 0, 0.65);
 }
+
 @keyframes zoomIn {
   from {
     opacity: 0;
@@ -200,4 +204,24 @@
     opacity: 1;
     transform: scale(1) translateY(0);
   }
+}
+
+/* ===============================
+          CUSTOM UTILITIES
+================================ */
+
+@utility bg-card {
+  @apply bg-gray-900 lg:border lg:rounded-4xl lg:border-white/10;
+}
+
+@utility inputDesign {
+  @apply w-full bg-gray-800 p-5 rounded-[10px] text-xl text-white font-thin;
+}
+
+@utility labelDesign {
+  @apply flex flex-col gap-5;
+}
+
+@utility skeltonDesign {
+  @apply mb-7 p-1 rounded-2xl border border-white/5;
 }

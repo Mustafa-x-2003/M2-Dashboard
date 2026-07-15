@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { FaUsers, FaUserShield, FaUserFriends, FaUserCheck } from 'react-icons/fa';
-import StatCard from './StatCard'; 
+import StatCard from './statcard'; 
 import { getAllUsers } from '../services/userStatus'; 
-const StatsGrid = () => {
+const StatsGrid = ({users, setUsers}) => {
   const [statsData, setStatsData] = useState({ total: 0, admins: 0, customers: 0, verified: 0 });
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const users = await getAllUsers(); 
         if (users && Array.isArray(users)) {
           setStatsData({
             total: users.length,
@@ -23,7 +22,7 @@ const StatsGrid = () => {
     fetchStats();
     const interval = setInterval(fetchStats, 10000);
     return () => clearInterval(interval);
-  }, []);
+  }, [users]);
 
   const stats = [
     { title: "Total Users", value: statsData.total, icon: FaUsers, color: "bg-cyan-500" },
@@ -33,7 +32,7 @@ const StatsGrid = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 md:gap-4">
       {stats.map((stat, index) => <StatCard key={index} {...stat} />)}
     </div>
   );
