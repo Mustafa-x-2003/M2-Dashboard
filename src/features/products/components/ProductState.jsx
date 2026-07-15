@@ -8,7 +8,7 @@ export default function ProductState({ logo, number, title, color }) {
     const c = colorMap[color] ?? colorMap.blue;
 
     return (
-        <div className={`${c.bg} border border-gray-100 dark:border-gray-700/50 rounded-2xl p-5 flex items-center gap-4 shadow-sm hover:shadow-md transition-all duration-200`}>
+        <div className={` border border-[var(--border)] bg-[var(--card)]  rounded-2xl p-5 flex items-center gap-4 shadow-sm hover:shadow-md transition-all duration-200`}>
             <div className={`${c.icon} rounded-xl p-3 text-2xl flex-shrink-0`}>
                 {logo}
             </div>

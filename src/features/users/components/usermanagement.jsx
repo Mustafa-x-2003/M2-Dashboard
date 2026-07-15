@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
-import AddUserForm from './adduser';
-import SearchUser from './searchuser';
-import { FaUserPlus, FaChevronDown } from 'react-icons/fa';
+import React, { useState } from "react";
+import AddUserForm from "./adduser";
+import SearchUser from "./searchuser";
+import { FaUserPlus, FaChevronDown } from "react-icons/fa";
 
 const UserManager = ({ searchTerm, setSearchTerm }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
     <div className="space-y-6">
+
       <div className="bg-[var(--card)] p-6 rounded-3xl border border-[var(--border)] shadow-xl transition-colors duration-300">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-500">User Management</p>
-            <h2 className="text-3xl font-bold text-[var(--text)] mt-2">Manage Users</h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-500">
+              User Management
+            </p>
+            <h2 className="text-3xl font-bold text-[var(--text)] mt-2">
+              Manage Users
+            </h2>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <SearchUser searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -22,16 +27,23 @@ const UserManager = ({ searchTerm, setSearchTerm }) => {
             >
               <FaUserPlus />
               <span>Add User</span>
-              <FaChevronDown className={`transition-transform duration-300 ${isFormOpen ? 'rotate-180' : ''}`} />
+              <FaChevronDown
+                className={`transition-transform duration-300 ${isFormOpen ? "rotate-180" : ""}`}
+              />
             </button>
           </div>
         </div>
       </div>
+
+
+
+      
       <div
-        className={`grid transition-all duration-400 ease-in-out ${isFormOpen
+        className={`grid transition-all duration-400 ease-in-out ${
+          isFormOpen
             ? "grid-rows-[1fr] opacity-100"
             : "grid-rows-[0fr] opacity-0"
-          }`}
+        }`}
       >
         <div className="overflow-hidden">
           <AddUserForm onClose={() => setIsFormOpen(false)} />
