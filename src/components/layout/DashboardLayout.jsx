@@ -8,7 +8,7 @@ export default function DashboardLayout() {
   return (
     <div className="flex min-h-screen bg-[var(--background)] transition-all duration-300">
       <aside className="fixed left-0 top-0 z-[1000] hidden h-screen w-72 border-r border-[var(--border)] bg-[var(--sidebar)] transition-all duration-300 lg:block">
-        <div className="items-center px-6 pt-4">
+        <div className="items-center pl-9 pt-4">
           <h5 className="mt-2 text-[12px] uppercase tracking-[3px] text-cyan-400">
             Commerce
           </h5>

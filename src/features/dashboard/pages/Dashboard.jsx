@@ -88,7 +88,7 @@ function Dashboard() {
           <div className="pt-8">
             <StatusCardsSection dashdata={dashboard} />
 
-            <div className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-[1.3fr_1fr]">
+            <div className="mt-6 h-fit grid grid-cols-1 gap-5 lg:grid-cols-[1.3fr_1fr]">
               <OrderStatusSection dashdata={dashboard} />
               <TopProduct dashboard={dashboard} />
             </div>

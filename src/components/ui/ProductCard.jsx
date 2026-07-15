@@ -5,13 +5,13 @@ const ProductCard = ({ image, name, subtitle, price }) => {
       <img
         src={image}
         alt={name}
-        className="w-14 h-14 bg-[var(--border)] md:w-15 md:h-15 rounded-2xl object-cover"
+        className="w-14 h-14 bg-[var(--card)] transition-colors duration-300  md:w-15 md:h-15 rounded-2xl object-cover"
       />
 
       <div className="flex gap-15  justify-between overflow-hidden  ">
         <div className=" ">
           <h2
-            className={`text-base font-semibold transition-all duration-300 text-[var(--text)] ${price ? "overflow-hidden whitespace-nowrap text-ellipsis w-50" : "overflow-hidden whitespace-nowrap text-ellipsis w-full"}  `}
+            className={`text-base font-semibold transition-colors duration-300 text-[var(--text)] ${price ? "overflow-hidden whitespace-nowrap text-ellipsis w-50" : "overflow-hidden whitespace-nowrap text-ellipsis w-full"}  `}
           >
             {name}
           </h2>
