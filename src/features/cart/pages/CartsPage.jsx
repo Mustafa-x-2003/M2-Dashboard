@@ -32,22 +32,22 @@ export default function CartsPage() {
 
   return (
     <div className="w-full p-4 sm:p-6 lg:p-8">
-      <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-8 shadow-[var(--shadow)]">
+      <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-8 shadow-[var(--shadow)] transition-colors duration-300">
         <p className="text-m  uppercase tracking-[0.35em] text-cyan-500">
           CARTS
         </p>
 
-        <h1 className="mt-3 text-3xl font-semibold text-[var(--text)]">
+        <h1 className="mt-3 text-3xl font-semibold transition-colors duration-300 text-[var(--text)]">
           Cart overview
         </h1>
 
-        <p className="mt-4 text-m text-[var(--text-secondary)]">
+        <p className="mt-4 text-m text-[var(--text-secondary)] transition-colors duration-300">
           All active carts returned from the API are rendered here with their
           latest item details.
         </p>
       </div>
 
-      <div className="mt-8 rounded-2xl border border-dashed border-[var(--border)] bg-[var(--card)] p-8 text-[var(--text-secondary)]">
+      <div className="mt-8 rounded-2xl border border-dashed transition-colors duration-300 border-[var(--border)] bg-[var(--card)] p-8 text-[var(--text-secondary)]">
         No carts returned from the API.
       </div>
     </div>
