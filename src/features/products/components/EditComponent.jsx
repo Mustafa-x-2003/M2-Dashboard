@@ -25,8 +25,10 @@ import { LuSparkles } from "react-icons/lu";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function EditComponent({
-  isLoading,
+  product,
+  setproduct,
   setisLoading,
+  isLoading,
   ids,
   popoup,
   setshowPopup,
@@ -34,25 +36,10 @@ export default function EditComponent({
   const params = useParams();
   const id = ids ? ids : params.id;
   const { register, watch, reset, setValue, handleSubmit } = useForm();
-  const [product, setproduct] = useState([]);
   const [status, setstatus] = useState(false);
   const [imagetoDelete, setimagetoDelete] = useState([]);
   const navigate = useNavigate();
   const [tagInput, setTagInput] = useState("");
-
-  useEffect(() => {
-    GetProduct(id)
-      .then((res) => {
-        const item = res.product;
-        setproduct(item);
-      })
-      .catch((error) => {
-        console.error("Load product failed", error);
-      })
-      .finally(() => {
-        setisLoading(false);
-      });
-  }, [id]);
 
   const handelDeletTag = (tagToRemove) => {
     setproduct({
@@ -120,7 +107,7 @@ export default function EditComponent({
         className={
           popoup
             ? "w-[50%] mt-20 md:w-full p-10 text-white"
-            : " w-full  left-sec bg-[var(--card)] border border-[var(--border)] rounded-4xl transition-colors duration-300 text-[var(--text)] p-10"
+            : " w-full  left-sec bg-[var(--card)] border border-[var(--border)] rounded-4xl transition-colors duration-300 text-[var(--text)] p-6"
         }
       >
         {isLoading ? (
@@ -150,35 +137,36 @@ export default function EditComponent({
           </div>
         ) : (
           // ========================
-          <div className="img-parent mt-25 flex flex-wrap justify-between gap-y-12 my-10 ">
-            {product.images.map((image, i) => {
+          <div className="img-parent mt-4 flex flex-wrap justify-between  gap-5 my-5 ">
+            {product.images.map((image, index) => {
               return (
-                <div
-                  className=" flex flex-col h-100 w-[45%] rounded-4xl relative "
-                  key={image.public_id}
+                <article
+                  key={index}
+                  className="group flex-grow-1 relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm dark:border-slate-800 dark:bg-slate-950/80 transition-colors duration-300"
                 >
-                  <img
-                    src={image.url}
-                    id={image.public_id}
-                    alt=""
-                    className="h-full w-full object-cover overflow-hidden rounded-t-2xl"
-                  />
+                  <div className="flex h-48 items-center justify-center bg-white dark:bg-slate-950/70 transition-colors duration-300">
+                    <img
+                      src={image.url}
+                      id={image.public_id}
+                      alt={`Preview ${index}`}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                   <button
+                    type="button"
                     onClick={() => handleMarkedImagetoDelete(image.public_id)}
+                    className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white opacity-0 transition group-hover:opacity-100"
                   >
-                    {" "}
-                    <FaRegTrashAlt className=" trashicon text-[45px] absolute top-3 right-5 p-2 rounded-full  bg-gray-800 " />
+                    <FiX className="h-4 w-4" />
                   </button>
-                  <div className="w-full h-10 pl-10 bg-gray-800 rounded-b-3xl flex items-center p-2">
+                  <div className="px-4 py-3 text-xs uppercase tracking-[0.25em] text-slate-500 dark:text-slate-300">
                     {!imagetoDelete.includes(image.public_id) ? (
-                      <p>IMAGE {i + 1}</p>
+                      <p>Image {index + 1}</p>
                     ) : (
-                      <p className="text-xl tracking-[.15em]">
-                        Marked to Delete
-                      </p>
+                      <p className=" tracking-[.15em]">Marked to Delete</p>
                     )}
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
@@ -261,7 +249,7 @@ export default function EditComponent({
         className={
           popoup
             ? "w-[50%] mt-20 p-10 md:w-full text-white"
-            : "right-sec  p-6  bg-[var(--card)] border border-[var(--border)] rounded-4xl transition-colors duration-300 text-zinc-50 pt-20 "
+            : "right-sec  p-6  bg-[var(--card)] border border-[var(--border)] rounded-4xl transition-colors duration-300 text-zinc-50  "
         }
       >
         <form
