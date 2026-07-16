@@ -10,6 +10,8 @@ import {
   FiStar,
   FiFolder,
 } from "react-icons/fi";
+import PageLoader from "../../../components/ui/PageLoader";
+import AddProductsHeader from "../components/AddProductsHeader";
 
 function ViewProductsPage() {
   const { id } = useParams();
@@ -53,9 +55,45 @@ function ViewProductsPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[var(--background)]">
-        <p className="text-[var(--text-secondary)]">Loading...</p>
-      </div>
+      <>
+        <PageLoader text="Loading products..." />
+
+        <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-6 py-5 shadow-[var(--shadow)]">
+          <div className="mb-4 h-5 w-48 animate-pulse rounded-full bg-[var(--border)]"></div>
+          <div className="h-8 w-40 animate-pulse rounded-xl bg-[var(--border)]"></div>
+        </div>
+
+        <div className="mb-6 grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <div
+              key={index}
+              className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow)]"
+            >
+              <div className="mb-4 h-10 w-10 animate-pulse rounded-xl bg-[var(--border)]"></div>
+              <div className="mb-3 h-4 w-28 animate-pulse rounded-full bg-[var(--border)]"></div>
+              <div className="h-7 w-16 animate-pulse rounded-xl bg-[var(--border)]"></div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-4 py-3 shadow-[var(--shadow)]">
+          <div className="h-5 w-full animate-pulse rounded-full bg-[var(--border)]"></div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-5 pb-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div
+              key={index}
+              className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-4 shadow-[var(--shadow)]"
+            >
+              <div className="mb-4 h-44 w-full animate-pulse rounded-xl bg-[var(--border)]"></div>
+              <div className="mb-3 h-5 w-3/4 animate-pulse rounded-full bg-[var(--border)]"></div>
+              <div className="mb-4 h-4 w-1/2 animate-pulse rounded-full bg-[var(--border)]"></div>
+              <div className="h-9 w-full animate-pulse rounded-xl bg-[var(--border)]"></div>
+            </div>
+          ))}
+        </div>
+      </>
     );
   }
 
@@ -91,34 +129,24 @@ function ViewProductsPage() {
     .join(" • ");
 
   return (
-    <div className="min-h-screen w-full bg-[var(--background)] text-[var(--text)] p-4">
-      <div className="max-w-6xl mx-auto rounded-xl">
-        {/* Back Section */}
-        <div className="bg-[var(--surface)] rounded-3xl mt-4 mb-3 p-4 border-[0.5px] border-[#ddd] dark:border-0">
-          <button
-            onClick={() => navigate("/products")}
-            className="flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text)] mb-4 transition cursor-pointer"
-          >
-            <FiArrowLeft />
-            Back
-          </button>
-
-          <div className="flex items-center gap-3 mb-1">
-            <FiEye className="text-md text-[var(--text-secondary)] mt-4" />
-
-            <h1 className="text-3xl font-bold">{product.name}</h1>
-          </div>
-
-          <p className="text-[var(--text-secondary)] text-sm ml-8">
-            Product details overview
-          </p>
-        </div>
-
+    <div className="min-h-screen w-full bg-[var(--background)] text-[var(--text)] p-6 transition-colors duration-300 ">
+      <AddProductsHeader
+        type={"Product Details"}
+        title={"Manage and review this product"}
+        desc={
+          "Review product details, images, pricing, inventory status, and category information from one place."
+        }
+        RightStatus={{
+          title: "Published",
+          desc: "Visible to customers and available for purchase",
+        }}
+      />
+      <div className=" mt-2 mx-auto rounded-xl transition-colors duration-300">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Images Section */}
           <div className="space-y-4 mt-4">
             {/* Main Image */}
-            <div className="rounded-3xl overflow-hidden bg-[var(--surface)] aspect-[4/2.9] flex items-center justify-center border-[0.5px] border-[#ddd] dark:border-0">
+            <div className="rounded-3xl  overflow-hidden bg-[var(--surface)] aspect-[4/2.9] flex items-center justify-center border-[0.5px] border-[#ddd] dark:border-0 transition-colors duration-300">
               {currentImage ? (
                 <img
                   src={currentImage}
@@ -126,7 +154,7 @@ function ViewProductsPage() {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <p className="text-[var(--text-secondary)]">
+                <p className="text-[var(--text-secondary)] transition-colors duration-300">
                   No images available
                 </p>
               )}
@@ -159,7 +187,7 @@ function ViewProductsPage() {
 
             {/* Auto Slider - arrows and dots live inside this container */}
             {images.length > 0 && (
-              <div className="relative rounded-3xl mt-5 overflow-hidden bg-[var(--surface)] aspect-[4/2] flex items-center justify-center border-[0.5px] border-[#ddd] dark:border-0">
+              <div className="relative rounded-3xl mt-5 overflow-hidden bg-[var(--surface)] aspect-[4/2] flex items-center justify-center border-[0.5px] border-[#ddd] dark:border-0 transition-colors duration-300">
                 <img
                   src={currentSliderImage}
                   alt={`${product.name} slider`}
@@ -170,14 +198,14 @@ function ViewProductsPage() {
                   <>
                     <button
                       onClick={handlePrevImage}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 text-[var(--primary)] hover:text-[var(--primary-hover)] transition text-6xl cursor-pointer"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 text-[var(--primary)] hover:text-[var(--primary-hover)] transition text-6xl cursor-pointer transition-colors duration-300"
                     >
                       <FiChevronLeft />
                     </button>
 
                     <button
                       onClick={handleNextImage}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 text-[var(--primary)] hover:text-[var(--primary-hover)] transition text-6xl cursor-pointer"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-[var(--primary)] hover:text-[var(--primary-hover)] transition text-6xl cursor-pointer transition-colors duration-300"
                     >
                       <FiChevronRight />
                     </button>
@@ -205,38 +233,38 @@ function ViewProductsPage() {
 
           <div className="space-y-4 mt-4">
             {/* Overview Card */}
-            <div className="bg-[var(--card)] rounded-3xl p-6  border-[0.5px] border-[#ddd] dark:border-0">
-              <h2 className="text-[var(--primary)] text-md font-light tracking-wide mb-2">
+            <div className="bg-[var(--card)] rounded-3xl p-6  border-[0.5px] border-[#ddd] dark:border-0 transition-colors duration-300">
+              <h2 className="text-[var(--primary)] text-md font-light tracking-wide mb-2 transition-colors duration-300">
                 OVERVIEW
               </h2>
 
-              <h3 className="text-3xl font-bold mb-2 text-[var(--text)]">
+              <h3 className="text-3xl font-bold mb-2 text-[var(--text)] transition-colors duration-300">
                 {product.name}
               </h3>
 
-              <p className="text-[var(--text-secondary)] text-md leading-relaxed">
+              <p className="text-[var(--text-secondary)] text-md leading-relaxed transition-colors duration-300">
                 {product.description}
               </p>
             </div>
 
             {/* Price and Discount */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-[var(--card)] rounded-2xl p-5 border-[0.5px] border-[#ddd] dark:border-0">
-                <p className="text-[var(--text-secondary)] text-xs font-light tracking-wide mb-2">
+              <div className="bg-[var(--card)] rounded-2xl p-5 border-[0.5px] border-[#ddd] dark:border-0 transition-colors duration-300">
+                <p className="text-[var(--text-secondary)] text-xs font-light tracking-wide mb-2 transition-colors duration-300">
                   PRICE
                 </p>
 
-                <p className="text-xl font-bold text-[var(--text)]">
+                <p className="text-xl font-bold text-[var(--text)] transition-colors duration-300">
                   ${product.price}
                 </p>
               </div>
 
-              <div className="bg-[var(--card)] rounded-2xl p-5 border-[0.5px] border-[#ddd] dark:border-0">
-                <p className="text-[var(--text-secondary)] text-xs font-light tracking-wide mb-2">
+              <div className="bg-[var(--card)] rounded-2xl p-5 border-[0.5px] border-[#ddd] dark:border-0 transition-colors duration-300">
+                <p className="text-[var(--text-secondary)] text-xs font-light tracking-wide mb-2 transition-colors duration-300">
                   DISCOUNT
                 </p>
 
-                <p className="text-xl font-bold text-[var(--text)]">
+                <p className="text-xl font-bold text-[var(--text)] transition-colors duration-300">
                   {product.discountPrice
                     ? `$${product.discountPrice}`
                     : "No discount"}
@@ -246,30 +274,30 @@ function ViewProductsPage() {
 
             {/* Stock and SKU */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-[var(--card)] rounded-2xl p-5 border-[0.5px] border-[#ddd] dark:border-0">
-                <p className="text-[var(--text-secondary)] text-xs font-light tracking-wide mb-2">
+              <div className="bg-[var(--card)] rounded-2xl p-5 border-[0.5px] border-[#ddd] dark:border-0 transition-colors duration-300">
+                <p className="text-[var(--text-secondary)] text-xs font-light tracking-wide mb-2 transition-colors duration-300">
                   STOCK
                 </p>
 
-                <p className="text-xl font-bold text-[var(--text)]">
+                <p className="text-xl font-bold text-[var(--text)] transition-colors duration-300">
                   {product.stock || 0}
                 </p>
               </div>
 
-              <div className="bg-[var(--card)] rounded-2xl p-5 border-[0.5px] border-[#ddd] dark:border-0">
-                <p className="text-[var(--text-secondary)] text-xs font-light tracking-wide mb-2">
+              <div className="bg-[var(--card)] rounded-2xl p-5 border-[0.5px] border-[#ddd] dark:border-0 transition-colors duration-300">
+                <p className="text-[var(--text-secondary)] text-xs font-light tracking-wide mb-2 transition-colors duration-300">
                   SKU
                 </p>
 
-                <p className="text-lg font-mono text-[var(--text)]">
+                <p className="text-lg font-mono text-[var(--text)] transition-colors duration-300">
                   {product.sku || "N/A"}
                 </p>
               </div>
             </div>
 
             {/* Tags */}
-            <div className="bg-[var(--card)] rounded-3xl p-5 py-4 border-[0.5px] border-[#ddd] dark:border-0">
-              <p className="text-[var(--text)] text-md font-bold tracking-wide mb-3 flex items-center gap-2">
+            <div className="bg-[var(--card)] rounded-3xl p-5 py-4 border-[0.5px] border-[#ddd] dark:border-0 transition-colors duration-300">
+              <p className="text-[var(--text)] text-md font-bold tracking-wide mb-3 flex items-center gap-2 transition-colors duration-300">
                 <FiTag className="text-sm" />
                 Tags
               </p>
@@ -279,13 +307,13 @@ function ViewProductsPage() {
                   product.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="bg-[var(--surface-secondary)] text-[var(--text-secondary)] px-3 py-1 rounded-xl text-sm font-medium"
+                      className="bg-[var(--surface-secondary)] text-[var(--text-secondary)] px-3 py-1 rounded-xl text-sm font-medium transition-colors duration-300"
                     >
                       #{tag}
                     </span>
                   ))
                 ) : (
-                  <span className="text-[var(--text-secondary)] text-sm">
+                  <span className="text-[var(--text-secondary)] text-sm transition-colors duration-300">
                     No tags available
                   </span>
                 )}
@@ -293,25 +321,25 @@ function ViewProductsPage() {
             </div>
 
             {/* Category Info */}
-            <div className="bg-[var(--card)] rounded-3xl p-4 py-4 border-[0.5px] border-[#ddd] dark:border-0">
-              <p className="text-[var(--text)] text-md font-bold tracking-wide mb-3 flex items-center gap-2">
+            <div className="bg-[var(--card)] rounded-3xl p-4 py-4 border-[0.5px] border-[#ddd] dark:border-0 transition-colors duration-300">
+              <p className="text-[var(--text)] text-md font-bold tracking-wide mb-3 flex items-center gap-2 transition-colors duration-300">
                 <FiFolder className="text-sm" />
                 Category Info
               </p>
 
-              <p className="text-[var(--text-secondary)] text-sm">
+              <p className="text-[var(--text-secondary)] text-sm transition-colors duration-300">
                 {categoryPath}
               </p>
             </div>
             {/* Highlights */}
             {product.shortDescription && (
-              <div className="bg-[var(--warning-light)] rounded-3xl p-4 py-4 mb-3 border-[0.5px] border-[#ddd] dark:border-0">
-                <p className="text-[var(--text)] text-md font-bold tracking-wide mb-3 flex items-center gap-2">
+              <div className="bg-[var(--warning-light)] rounded-3xl p-4 py-4 mb-3 border-[0.5px] border-[#ddd] dark:border-0 transition-colors duration-300">
+                <p className="text-[var(--text)] text-md font-bold tracking-wide mb-3 flex items-center gap-2 transition-colors duration-300">
                   <FiStar className="text-sm" />
                   Highlights
                 </p>
 
-                <p className="text-[var(--text-secondary)] font-md text-sm">
+                <p className="text-[var(--text-secondary)] font-md text-sm transition-colors duration-300">
                   {product.shortDescription}
                 </p>
               </div>

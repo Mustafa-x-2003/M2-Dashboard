@@ -39,7 +39,7 @@ export default function AppRoutes() {
 
         <Route path="/products/view/:id" element={<ViewProductsPage />} />
 
-        <Route path="/products/add" element={<AddProductPage />} />
+        <Route path="/addProduct" element={<AddProductPage />} />
 
         <Route path="/products/edit/:id" element={<Editpage />} />
 
