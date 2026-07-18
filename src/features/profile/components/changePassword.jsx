@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { sendPasswordResetOtp, resetPassword } from "../service/passwordService";
 
 export default function ChangePassword({ userEmail }) {
-  const [step, setStep] = useState("button"); // button -> otp -> password
+  const [step, setStep] = useState("button"); 
   const [email, setEmail] = useState(userEmail || "");
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -58,26 +58,26 @@ export default function ChangePassword({ userEmail }) {
   };
 
   const inputClass =
-    "w-full rounded-lg border border-[var(--border)] bg-[var(--input-bg)] px-4 py-3 text-sm text-[var(--text)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--primary)]";
+    "w-full rounded-lg border border-[var(--border)] bg-[var(--input-bg)] px-4 py-3 text-sm text-[var(--text)] outline-none transition-colors duration-300 placeholder:text-[var(--text-muted)] focus:border-[var(--input-focus)]";
 
   return (
-    <div className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm">
+    <div className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm transition-colors duration-300">
       <div className="mb-3 flex items-center gap-2">
-        <Lock size={18} className="text-[var(--primary)]" />
-        <h3 className="text-lg font-bold text-[var(--text)]">Change Password</h3>
+        <Lock size={18} className="text-[var(--primary)] transition-colors duration-300" />
+        <h3 className="text-lg font-bold text-[var(--text)] transition-colors duration-300">Change Password</h3>
       </div>
 
       {step === "button" && (
         <button
           onClick={() => setStep("otp")}
-          className="rounded-lg border border-[var(--primary)] px-4 py-2 text-sm font-semibold text-[var(--primary)] transition hover:bg-[var(--primary)] hover:text-[var(--text-inverse)] cursor-pointer">
+          className="rounded-lg border border-[var(--primary)] px-4 py-2 text-sm font-semibold text-[var(--primary)] transition-colors duration-300 hover:bg-[var(--primary)] hover:text-[var(--text-inverse)] cursor-pointer">
           Change Password
         </button>
       )}
 
       {step === "otp" && (
         <div className="space-y-3">
-          <p className="text-sm text-[var(--text-muted)]">
+          <p className="text-sm text-[var(--text-muted)] transition-colors duration-300">
             We'll send an OTP to your email to verify your identity.
           </p>
           <input
@@ -90,13 +90,13 @@ export default function ChangePassword({ userEmail }) {
             <button
               onClick={handleSendOtp}
               disabled={isLoading}
-              className="rounded-lg bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-[var(--text-inverse)] transition hover:opacity-90 disabled:opacity-50 cursor-pointer"
+              className="rounded-lg bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-[var(--text-inverse)] transition-colors duration-300 hover:opacity-90 disabled:opacity-50 cursor-pointer"
             >
               {isLoading ? "Sending..." : "Send OTP"}
             </button>
             <button
               onClick={() => setStep("button")}
-              className="rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-semibold text-[var(--text-secondary)] cursor-pointer"
+              className="rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-semibold text-[var(--text-secondary)] transition-colors duration-300 cursor-pointer"
             >
               Cancel
             </button>
@@ -130,13 +130,13 @@ export default function ChangePassword({ userEmail }) {
             <button
               onClick={handleResetPassword}
               disabled={isLoading}
-              className="rounded-lg bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-[var(--text-inverse)] transition hover:opacity-90 disabled:opacity-50 cursor-pointer"
+              className="rounded-lg bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-[var(--text-inverse)] transition-colors duration-300 hover:opacity-90 disabled:opacity-50 cursor-pointer"
             >
               {isLoading ? "Saving..." : "Reset Password"}
             </button>
             <button
               onClick={() => setStep("button")}
-              className="rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-semibold text-[var(--text-secondary)] cursor-pointer">
+              className="rounded-lg border border-[var(--border)] px-4 py-2 text-sm font-semibold text-[var(--text-secondary)] transition-colors duration-300 cursor-pointer">
               Cancel
             </button>
           </div>
