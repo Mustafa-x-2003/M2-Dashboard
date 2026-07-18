@@ -119,11 +119,13 @@ function Navbar() {
             style={`${buttons.theme.style}`}
             callback={buttons.theme.callback}
           />
-          <InfoCard
-            name={currentUser?.user.username}
-            rol={currentUser?.user.role}
-            avatar={currentUser?.user.avatar}
-          />
+          <div onClick={() => (window.location.href = "/profile")} className="cursor-pointer">
+            <InfoCard
+              name={currentUser?.user.username}
+              rol={currentUser?.user.role}
+              avatar={currentUser?.user.avatar}
+            />
+          </div>
           <Button
             icon={buttons.logout.icon}
             style={`${buttons.logout.style}`}
