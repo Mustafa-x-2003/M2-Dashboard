@@ -13,32 +13,26 @@ export default function EditProfile({ user, onClose, onUpdate }) {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   const handleSave = async () => {
-    const userId = user?.id || user?._id;
-    if (!userId) {
-      toast.error("User ID is missing");
-      return;
-    }
-    setIsLoading(true);
-    try {
-      const updatedUser = await updateProfile(userId, {
-        username: form.username,
-        phone: form.phone,
-        avatar: form.avatarUrl,
-      });
-      onUpdate({
-        username: updatedUser.username,
-        phone: updatedUser.phone,
-        avatar: updatedUser.avatar,
-      });
-      toast.success("Profile updated successfully!");
-      onClose();
-    } catch (error) {
-      console.error(error);
-      toast.error(error.message || "Update failed.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const userId = user?.id || user?._id;
+  if (!userId) {
+    toast.error("User ID is missing");
+    return;
+  }
+  setIsLoading(true);
+  try {
+    await updateProfile(userId, {
+      username: form.username,
+      phone: form.phone,
+      avatar: form.avatarUrl,
+    });
+    window.location.reload();
+  } catch (error) {
+    console.error(error);
+    toast.error(error.message || "Update failed.");
+  } finally {
+    setIsLoading(false);
+  }
+};
   const inputClass = "w-full rounded-lg border border-[var(--border)] bg-[var(--input-bg)] px-4 py-3 text-sm text-[var(--text)] outline-none placeholder:text-[var(--text-muted)] focus:border-[var(--primary)]";
   return (
     <div className="mt-4 space-y-3">

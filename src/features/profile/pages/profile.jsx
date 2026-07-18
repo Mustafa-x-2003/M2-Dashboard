@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast";
 export default function ProfilePage() {
   const { user } = useAuth();
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8 animate-fade-in">
+    <div className="w-full min-h-screen p-4 sm:p-6 lg:p-10">
       <Toaster position="top-right" />
       <h1 className="mb-8 text-2xl font-bold dark:text-slate-100">My Profile</h1>
       <ProfileHeader user={user} />
