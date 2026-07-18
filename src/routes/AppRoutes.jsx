@@ -16,6 +16,8 @@ import Settings from "../features/settings/pages/Settings";
 import DashboardLayout from "../components/layout/DashboardLayout";
 import ProtectedRoute from "./ProtectedRoute";
 
+import Profile from "../features/profile/pages/profile";
+
 export default function AppRoutes() {
   return (
     <Routes>
@@ -54,6 +56,9 @@ export default function AppRoutes() {
 
         {/* Settings */}
         <Route path="/settings" element={<Settings />} />
+
+          {/* Profile */}
+        <Route path="/profile" element={<Profile />} />
       </Route>
     </Routes>
   );
