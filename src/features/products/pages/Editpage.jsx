@@ -1,22 +1,41 @@
-import { React, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import EditComponent from "../components/EditComponent";
-import { Link, useParams } from "react-router";
-import Skeleton from "react-loading-skeleton";
-import { LuPackage2 } from "react-icons/lu";
-import { FaArrowLeft } from "react-icons/fa";
 import AddProductsHeader from "../components/AddProductsHeader";
 import PageLoader from "../../../components/ui/PageLoader";
 import { GetProduct } from "../services/Editproduct";
+import { useParams } from "react-router";
+import "react-loading-skeleton/dist/skeleton.css";
+import ProductForm from "../components/ProductForm";
+import { AddProductProvider } from "../context/AddProductContext";
+import { updateProduct } from "../services/productsApi";
+import { useNavigate } from "react-router";
 export default function Editpage() {
   const [isLoading, setisLoading] = useState(true);
-  const [product, setproduct] = useState([]);
+  const [product, setproduct] = useState(null);
+
   const params = useParams();
   const id = params.id;
+  const navigate = useNavigate();
+
+  const handleUpdate = async (data) => {
+    try {
+      await updateProduct(
+        product._id,
+        {
+          ...data,
+        }
+      );
+
+      navigate("/products");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     GetProduct(id)
       .then((res) => {
-        const item = res.product;
-        setproduct(item);
+        setproduct(res.product);
       })
       .catch((error) => {
         console.error("Load product failed", error);
@@ -27,7 +46,7 @@ export default function Editpage() {
   }, [id]);
 
   return (
-    <section className="  w-full  p-8   ml-auto  flex flex-col ">
+    <section className="w-full p-8 ml-auto flex flex-col">
       {isLoading ? (
         <>
           <PageLoader text="Loading products..." />
@@ -70,18 +89,24 @@ export default function Editpage() {
         </>
       ) : (
         <>
-          <AddProductsHeader
-            type={"Edit Product"}
-            title={"Update and refine the product entry"}
-            desc={
-              "Review the current product data, add new images, remove existing ones, and save your updates safely"
-            }
-            RightStatus={{
-              title: "Live",
-              desc: "Connected to the real product update API",
-            }}
-          />
-          <EditComponent product={product} isLoading={isLoading} setisLoading={setisLoading} setproduct={setproduct} />
+            <AddProductsHeader
+              type="Edit Product"
+              title="Update and refine the product entry"
+              desc="Review the current product data, add new images, remove existing ones, and save your updates safely."
+              RightStatus={{
+                title: "Live",
+                desc: "Connected to the real product update API",
+              }}
+            />
+
+            <AddProductProvider>
+              <ProductForm
+                mode="edit"
+                product={product}
+                onSubmit={handleUpdate}
+              />
+            </AddProductProvider>
+           
         </>
       )}
     </section>

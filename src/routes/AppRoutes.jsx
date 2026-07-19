@@ -1,5 +1,4 @@
 import { Routes, Route, Navigate } from "react-router";
-
 import Login from "../features/auth/pages/LoginPage";
 
 import Dashboard from "../features/dashboard/pages/Dashboard";
@@ -15,6 +14,7 @@ import Settings from "../features/settings/pages/Settings";
 
 import DashboardLayout from "../components/layout/DashboardLayout";
 import ProtectedRoute from "./ProtectedRoute";
+
 
 import Profile from "../features/profile/pages/profile";
 
@@ -41,7 +41,7 @@ export default function AppRoutes() {
 
         <Route path="/products/view/:id" element={<ViewProductsPage />} />
 
-        <Route path="/addProduct" element={<AddProductPage />} />
+        <Route path="/products/add" element={<AddProductPage />} />
 
         <Route path="/products/edit/:id" element={<Editpage />} />
 

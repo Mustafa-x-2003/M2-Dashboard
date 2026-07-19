@@ -10,10 +10,12 @@ export default function Input({
   isLoading,
   styling,
   register,
-  placeholder
+  placeholder,
+  validation = {},
+  error,
 }) {
   return (
-    <label htmlFor={name} className="">
+    <label htmlFor={name}>
       {isLoading ? (
         <Skeleton width={300} />
       ) : (
@@ -21,17 +23,27 @@ export default function Input({
           {title}
         </span>
       )}
+
       {isLoading ? (
         <Skeleton className="skeltonDesign" />
       ) : (
-        <input
-          type={type}
-          id={name}
-          defaultValue={value ?? ""}
-          placeholder={placeholder}
-          {...(register ? register(name) : {})}
-          className="h-14 w-full  rounded-2xl text-[var(--text)] border border-[var(--input-border)] bg-[var(--background)] px-3 outline-none transition-colors duration-300 focus:border-[var(--input-focus)]"
-        />
+        <>
+          <input
+            type={type}
+            id={name}
+            defaultValue={value ?? ""}
+            placeholder={placeholder}
+            {...(register ? register(name, validation) : {})}
+            className={`h-14 w-full rounded-2xl border border-[var(--input-border)] bg-[var(--background)] px-3 text-[var(--text)] outline-none transition-colors duration-300 focus:border-[var(--input-focus)]
+              ${error ? "border-red-500" : ""} ${styling || ""}`}
+          />
+
+          {error && (
+            <span className="mt-1 text-xs text-red-500">
+              {error.message}
+            </span>
+          )}
+        </>
       )}
     </label>
   );

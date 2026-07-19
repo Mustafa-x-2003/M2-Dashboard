@@ -3,6 +3,7 @@ import ProductImage from "./productImage";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 export default function ImagesList({ images, featured }) {
+  
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const intervalRef = useRef(null);
@@ -26,6 +27,11 @@ export default function ImagesList({ images, featured }) {
     return () => stopAutoPlay();
   }, [images, isHovered, startAutoPlay, stopAutoPlay]);
 
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [images]);
+
   const handlePrev = (e) => {
     e.stopPropagation();
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
@@ -40,7 +46,7 @@ export default function ImagesList({ images, featured }) {
 
   return (
     <div
-      className="relative w-full h-48 overflow-hidden"
+      className="relative w-full h-full overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(true)}
@@ -93,7 +99,14 @@ export default function ImagesList({ images, featured }) {
             />
           ))}
         </div>
+        
+
+
+
       )}
+
+
+      
     </div>
   );
 }
