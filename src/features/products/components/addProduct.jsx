@@ -16,12 +16,14 @@ export default function AddProduct() {
                 </div>
             </div>
             <button
-                onClick={()=> navigate('/addProduct')}
+                onClick={() => navigate("/products/add")}
                 className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 active:scale-95 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md shadow-teal-200 dark:shadow-teal-900/40 transition-all duration-200"
             >
                 <HiOutlinePlusSm className="text-xl" />
                 Add Product
             </button>
         </div>
+
+
     )
 }

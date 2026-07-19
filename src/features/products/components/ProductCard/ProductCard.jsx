@@ -1,5 +1,4 @@
 
-
 import ProductImageSection from "./ProductImageSection";
 import ProductInfo from "./ProductInfo";
 import ProductActions from "./ProductActions";

@@ -8,7 +8,7 @@ export const AddProductProvider = ({ children }) => {
   const [state, dispatch] = useReducer(addProductReducer, INITIAL_STATE);
 
   const submitProduct = async (fields) => {
-    if (state.images.length === 0) {
+    if (fields.images.length === 0) {
       dispatch({ type: 'SET_ERROR', payload: 'Please upload at least one product image.' });
       return { success: false }; // Returning status so component can handle navigation/timers
     }
@@ -17,7 +17,10 @@ export const AddProductProvider = ({ children }) => {
     dispatch({ type: 'SET_LOADING', payload: true });
 
     try {
-      await createProduct(fields, state.tags, state.images);
+      console.log("FIELDS", fields);
+      console.log("IMAGES", fields.images);
+      console.log("TAGS", fields.tags);
+      await createProduct(fields, fields.tags, fields.images);
       dispatch({ type: 'SET_SUCCESS', payload: true });
       return { success: true };
     } catch (err) {

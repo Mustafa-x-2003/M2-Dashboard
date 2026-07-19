@@ -14,7 +14,7 @@ const links = [
   { icon: <FiHome />, label: "Dashboard", path: "dashboard" },
   { icon: <LuUsers />, label: "Users", path: "users" },
   { icon: <AiOutlineProduct />, label: "Products", path: "products" },
-  { icon: <IoMdAdd />, label: "Add Product", path: "addProduct" },
+  { icon: <IoMdAdd />, label: "Add Product", path: "products/add" },
   { icon: <MdOutlineEventNote />, label: "Orders", path: "orders" },
   { icon: <IoCartOutline />, label: "Carts", path: "carts" },
   { icon: <IoSettingsOutline />, label: "Settings", path: "settings" },

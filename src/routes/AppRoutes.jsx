@@ -15,6 +15,7 @@ import Settings from "../features/settings/pages/Settings";
 import Editpage from "../features/products/pages/Editpage";
 import DashboardLayout from "../components/layout/DashboardLayout";
 import ProtectedRoute from "./ProtectedRoute";
+import ViewPageCard from "../features/products/components/productCard/ViewPageCard";
 
 export default function AppRoutes() {
   
@@ -32,11 +33,11 @@ export default function AppRoutes() {
       >
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/products/add" element={<AddProductPage />} />
+        <Route path="products/add" element={<AddProductPage />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/addProduct" element={<AddProductPage />} />
-        <Route path='/products/edit/:id' element={ <Editpage/>}/>
+        <Route path='/products/edit/:id' element={<Editpage />} />
+        <Route path='/products/view/:id' element={<ViewPageCard />} />
         <Route path="/carts" element={<Carts />} />
         <Route path="/settings" element={<Settings />} />
 

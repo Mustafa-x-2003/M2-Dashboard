@@ -214,22 +214,5 @@
 ================================
 */
 
+/* 
 
-@utility  bg-card {
-
-  @apply bg-gray-900   lg:border lg:rounded-4xl lg:border-white/10 
-}
-
-@utility  inputDesign {
-
-  @apply w-full bg-gray-800 p-5 rounded-[10px] text-xl text-white font-thin 
-}
-
-@utility  labelDesign {
-
-  @apply flex flex-col gap-5  
-}
-@utility  skeltonDesign {
-
-  @apply mb-7 p-1 rounded-2xl border border-white/5 
-}

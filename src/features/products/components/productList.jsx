@@ -1,7 +1,8 @@
-import ProductCard from "./productCard"
+import EditComponent from "./EditComponent"
+import ProductCard from "../components/ProductCard/ProductCard"
 import { HiOutlineEmojiSad } from "react-icons/hi"
 
-export default function ProductList({ query , products, loading, error, isUser, onEdit, onDelete, onView, AddToCart }) {
+export default function ProductList({ query, products, loading, error, isUser, onEdit, onDelete, onView, AddToCart, setSelectedId, setShowPopup }) {
 
     if (loading) return (
         <div className="flex flex-col items-center justify-center py-24 gap-4">
@@ -27,18 +28,23 @@ export default function ProductList({ query , products, loading, error, isUser, 
     )
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5 pb-8">
             {products.filter(product => product.name.toLowerCase().startsWith(query.toLowerCase())).map(product => (
                 <ProductCard
                     key={product._id}
                     product={product}
-                    isUser={isUser}
+                    isUser={isUser}  
+                    loading={loading}
                     onEdit={onEdit}
                     onDelete={onDelete}
                     onView={onView}
                     AddToCart={AddToCart}
+                    setSelectedId={setSelectedId}
+                    setShowPopup={setShowPopup}
                 />
             ))}
+
+            
         </div>
     )
 }

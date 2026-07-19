@@ -2,7 +2,9 @@ import { useNavigate } from 'react-router';
 import { FiArrowLeft } from 'react-icons/fi';
 import { FaBox } from "react-icons/fa";
 
-export default function AddProductsHeader() {
+export default function AddProductsHeader({
+  mode = "add"
+}) {
   const navigate = useNavigate();
 
   return (
@@ -29,13 +31,20 @@ export default function AddProductsHeader() {
               <FaBox className="h-6 w-6" />
             </div>
             <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-cyan-600 dark:text-cyan-300 transition-colors duration-300">Create Product</p>
-              <h1 className="mt-1 text-4xl font-black text-slate-900 dark:text-white transition-colors duration-300">Launch a polished product entry</h1>
+              <p className="text-xs uppercase tracking-[0.35em] text-cyan-600 dark:text-cyan-300 transition-colors duration-300">{mode === "edit"
+                ? "Edit Product"
+                : "Create Product"}</p>
+
+              <h1 className="mt-1 text-4xl font-black text-slate-900 dark:text-white transition-colors duration-300">{mode === "edit"
+                ? "Update Product"
+                : "Launch a polished product entry"}</h1>
             </div>
           </div>
 
           <p className="mt-4 max-w-2xl text-slate-600 dark:text-slate-300 transition-colors duration-300">
-            Add products with validation, image previews, multi-upload support, and smooth UX.
+            {mode === "edit"
+              ? "Update product information."
+              : "Add products with validation, image previews..."}
           </p>
         </div>
 
@@ -47,4 +56,4 @@ export default function AddProductsHeader() {
       </div>
     </div>
   );
-}
+}
