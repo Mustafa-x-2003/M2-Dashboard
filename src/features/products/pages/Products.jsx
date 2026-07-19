@@ -1,4 +1,5 @@
-import { useProductSearch } from "../hooks/useProductSearch"
+
+import { useProductSearch } from "../hooks/useProductSearch";
 import ProductList from "../components/productList"
 import SearchBar from "../components/searchBar"
 import ProductsStatesLIst from "../components/productsStatesLIst"
@@ -20,19 +21,16 @@ export default function Products({ onEdit, onDelete, onView, AddToCart, addProdu
     setCat,
     refresh,
   } = useProductSearch();
-    const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
     const [showPopup, setShowPopup] = useState(false);
     const [selectedId, setSelectedId] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-
-  const [deleteLoading, setDeleteLoading] = useState(false);
 
 
   const handleDeleteProduct = async (id) => {
     try {
       await deleteProduct(id);
       refresh(); // يعيد تحميل المنتجات فقط
-      window.location.reload()
     } catch (error) {
       console.error("Delete product failed:", error);
     }
@@ -44,27 +42,28 @@ export default function Products({ onEdit, onDelete, onView, AddToCart, addProdu
       <>
         <PageLoader text="Loading products..." />
 
-        <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-6 py-5 shadow-[var(--shadow)]">
-          <div className="mb-4 h-5 w-48 animate-pulse rounded-full bg-[var(--border)]"></div>
-          <div className="h-8 w-40 animate-pulse rounded-xl bg-[var(--border)]"></div>
-        </div>
 
-        <div className="mb-6 grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <div
-              key={index}
-              className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow)]"
-            >
-              <div className="mb-4 h-10 w-10 animate-pulse rounded-xl bg-[var(--border)]"></div>
-              <div className="mb-3 h-4 w-28 animate-pulse rounded-full bg-[var(--border)]"></div>
-              <div className="h-7 w-16 animate-pulse rounded-xl bg-[var(--border)]"></div>
-            </div>
-          ))}
-        </div>
+          <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-6 py-5 shadow-[var(--shadow)]">
+            <div className="mb-4 h-5 w-48 animate-pulse rounded-full bg-[var(--border)]"></div>
+            <div className="h-8 w-40 animate-pulse rounded-xl bg-[var(--border)]"></div>
+          </div>
 
-        <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-4 py-3 shadow-[var(--shadow)]">
-          <div className="h-5 w-full animate-pulse rounded-full bg-[var(--border)]"></div>
-        </div>
+          <div className="mb-6 grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow)]"
+              >
+                <div className="mb-4 h-10 w-10 animate-pulse rounded-xl bg-[var(--border)]"></div>
+                <div className="mb-3 h-4 w-28 animate-pulse rounded-full bg-[var(--border)]"></div>
+                <div className="h-7 w-16 animate-pulse rounded-xl bg-[var(--border)]"></div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-4 py-3 shadow-[var(--shadow)]">
+            <div className="h-5 w-full animate-pulse rounded-full bg-[var(--border)]"></div>
+          </div>
 
         <div className="grid grid-cols-1 gap-5 pb-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {Array.from({ length: 8 }).map((_, index) => (
@@ -82,31 +81,34 @@ export default function Products({ onEdit, onDelete, onView, AddToCart, addProdu
       </>
     ) : (
       <>
-              <div className="p-8  border border-slate-200 bg-white shadow-sm transition-colors duration-300 dark:border-slate-900 dark:bg-slate-900/20 dark:shadow-none">
-                <AddProduct addProduct={addProduct} />
-                <ProductsStatesLIst products={result} />
-                <SearchBar
-                  query={query}
-                  setQuery={setQuery}
-                  loading={loading}
-                  cat={cat}
-                  setCat={setCat}
-                  products={result}
-                />
-                <ProductList
-                  query={query}
-                  products={result}
-                  loading={false}
-                  error={error}
-                  isUser={false}
-                  onEdit={onEdit}
-                  onDelete={handleDeleteProduct}
-                  onView={onView}
-                  AddToCart={AddToCart}
-                  setSelectedId={setSelectedId}
-                  setShowPopup={setShowPopup}
+        <div className="p-8 border border-slate-200 bg-white shadow-sm transition-colors duration-300 dark:border-slate-900 dark:bg-slate-900/20 dark:shadow-none">
 
-                />
+          <AddProduct addProduct={addProduct} />
+
+          <ProductsStatesLIst products={result} />
+
+          <SearchBar
+            query={query}
+            setQuery={setQuery}
+            loading={loading}
+            cat={cat}
+            setCat={setCat}
+            products={result}
+          />
+
+          <ProductList
+            query={query}
+            products={result}
+            loading={false}
+            error={error}
+            isUser={false}
+            onEdit={onEdit}
+            onDelete={handleDeleteProduct}
+            onView={onView}
+            AddToCart={AddToCart}
+            setSelectedId={setSelectedId}
+            setShowPopup={setShowPopup}
+          />
 
 
 
@@ -132,8 +134,6 @@ export default function Products({ onEdit, onDelete, onView, AddToCart, addProdu
                       <EditComponent
                         ids={selectedId}
                         popoup={true}
-                        isLoading={isLoading}
-                        setisLoading={setIsLoading}
                         setshowPopup={setShowPopup}
                         refresh={refresh}
                       />

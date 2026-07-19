@@ -17,11 +17,11 @@ import { FiLogOut } from "react-icons/fi";
 import ProductCard from "../ui/ProductCard";
 import { getCurrentUser } from "../../features/auth/service/authService";
 import { cache } from "react";
-function InfoCard({ name, rol ,avatar}) {
+function InfoCard({ name, rol, avatar }) {
   return (
     <div className=" hidden lg:flex gap-2  bg-[var(--card)] py-2 px-3 rounded-[20px] border transition-all duration-300  border-[var(--border)] justify-between items-center  ">
       <img
-        src={ avatar || "https://i.pravatar.cc/150"}
+        src={avatar || "https://i.pravatar.cc/150"}
         alt={name}
         className="w-10 h-10 sm:w-12 sm:h-12 rounded-full transition-all duration-300  object-cover border"
         style={{
@@ -52,7 +52,7 @@ function Navbar() {
     menu: {
       icon: isMenuOpen ? <RiCloseLargeFill /> : <IoMdMenu />,
       style:
-        "block lg:hidden text-[var(--text)] text-lg bg-[var(--button-secondary)] border border-[var(--border)] cursor-pointer flex justify-center  items-center w-12 h-12 p-2 rounded-xl  ",
+        "text-[var(--text)] text-lg bg-[var(--button-secondary)] border border-[var(--border)] cursor-pointer flex justify-center  items-center w-12 h-12 p-2 rounded-xl  ",
       callback: toggleMenuOpen,
     },
     Notifications: {
@@ -93,11 +93,21 @@ function Navbar() {
         <h1 className=" hidden lg:block  text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text)]">
           <ProductCard name={"M2-Dashboard"} image={Logo} />
         </h1>
-        <Button
-          icon={buttons.menu.icon}
-          style={`${buttons.menu.style} `}
-          callback={buttons.menu.callback}
-        />
+        <div className="block lg:hidden  flex items-center">
+          <Button
+            icon={buttons.menu.icon}
+            style={`${buttons.menu.style} `}
+            callback={buttons.menu.callback}
+          />
+          <span className=" w-10 flex items-center relative">
+            <img
+              src={Logo}
+              alt=""
+              className=" transform scale-250 absolute left-5"
+            />
+          </span>
+        </div>
+
         <div className="flex justify-center  items-center gap-3">
           <Button
             icon={buttons.Notifications.icon}
@@ -109,11 +119,13 @@ function Navbar() {
             style={`${buttons.theme.style}`}
             callback={buttons.theme.callback}
           />
-          <InfoCard
-            name={currentUser?.user.username}
-            rol={currentUser?.user.role}
-            avatar={currentUser?.user.avatar}
-          />
+          <div onClick={() => (window.location.href = "/profile")} className="cursor-pointer">
+            <InfoCard
+              name={currentUser?.user.username}
+              rol={currentUser?.user.role}
+              avatar={currentUser?.user.avatar}
+            />
+          </div>
           <Button
             icon={buttons.logout.icon}
             style={`${buttons.logout.style}`}

@@ -4,26 +4,32 @@ import { useNavigate } from "react-router";
 
 export default function AddProduct() {
     const navigate = useNavigate();
+
     return (
-        <div className="mb-6 flex items-center justify-between bg-gradient-to-r from-cyan-50 to-teal-50 dark:from-gray-800 dark:to-gray-800 border border-teal-100 dark:border-gray-700 rounded-2xl px-6 py-5 transition-colors duration-300">
+        <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 transition-colors duration-300">
             <div className="flex items-center gap-4">
-                <div className="bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400 rounded-xl p-3">
+                <div className="rounded-xl bg-[#132943] p-3 text-cyan-500">
                     <FaStore className="text-2xl" />
                 </div>
+
                 <div>
-                    <p className="text-xs font-semibold tracking-widest text-teal-500 dark:text-teal-400 uppercase">Product Dashboard</p>
-                    <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Products</h1>
+                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-500">
+                        Product Dashboard
+                    </p>
+
+                    <h2 className="mt-2 text-3xl font-bold text-[var(--text)]">
+                        Products
+                    </h2>
                 </div>
             </div>
+
             <button
                 onClick={() => navigate("/products/add")}
-                className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 active:scale-95 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md shadow-teal-200 dark:shadow-teal-900/40 transition-all duration-200"
+                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl bg-cyan-500 px-6 py-3 font-semibold text-white shadow-md transition hover:bg-cyan-600 active:scale-95 sm:w-auto"
             >
                 <HiOutlinePlusSm className="text-xl" />
                 Add Product
             </button>
         </div>
-
-
-    )
+    );
 }

@@ -21,6 +21,7 @@ export default function useQuickEdit({
   });
 
   const [status, setStatus] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [imagetoDelete, setImagetoDelete] = useState([]);
   const [featured, setFeatured] = useState(false);
   const [active, setActive] = useState(false);
@@ -30,6 +31,8 @@ export default function useQuickEdit({
 
 
   useEffect(() => {
+    setIsLoading(true);
+
     GetProduct(id)
       .then((res) => {
         const item = res.product;
@@ -45,6 +48,9 @@ export default function useQuickEdit({
       })
       .catch((error) => {
         console.error(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [id, reset]);
 
@@ -115,8 +121,8 @@ export default function useQuickEdit({
           await UpdateProduct(id, newData);
     
       
-           refresh(); 
-          setshowPopup(false);
+          refresh?.();
+          setshowPopup?.(false);
           
         } catch (error) {
           console.error(error);
@@ -127,13 +133,13 @@ export default function useQuickEdit({
       };
 
 
-
   return {
     register,
     handleSubmit,
 
     product,
     status,
+    isLoading,
 
     featured,
     active,
@@ -148,7 +154,6 @@ export default function useQuickEdit({
     onsubmit,
     errors,
   };
-
 
 
 }

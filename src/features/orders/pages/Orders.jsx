@@ -174,14 +174,14 @@ function Orders() {
             placeholder="Search ID, customer..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="h-12 w-full rounded-lg border border-[var(--input-border)] bg-[var(--input-bg)] pl-11 pr-4 text-[var(--text)] placeholder:text-[var(--text-muted)] outline-none"
+            className="h-12 w-full rounded-xl border border-[var(--input-border)] bg-[var(--input-bg)] pl-11 pr-4 text-[var(--text)] placeholder:text-[var(--text-muted)] focus:border-[var(--input-focus)] outline-none"
           />
         </div>
 
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="h-11 w-[150px] max-w-full rounded-lg border border-[var(--input-border)] bg-[var(--input-bg)] px-4 text-sm text-[var(--text)]"
+          className="h-11 w-[150px] max-w-full rounded-lg focus:border-[var(--input-focus)] border border-[var(--input-border)] bg-[var(--input-bg)] px-4 text-sm text-[var(--text)]"
         >
           {statusOptions.map((item) => (
             <option key={item}>{item}</option>
@@ -191,7 +191,7 @@ function Orders() {
         <select
           value={paymentFilter}
           onChange={(e) => setPaymentFilter(e.target.value)}
-          className="h-11 w-[150px] max-w-full rounded-lg border border-[var(--input-border)] bg-[var(--input-bg)] px-4 text-sm text-[var(--text)]"
+          className="h-11 w-[150px] max-w-full rounded-lg focus:border-[var(--input-focus)] border border-[var(--input-border)] bg-[var(--input-bg)] px-4 text-sm text-[var(--text)]"
         >
           {paymentOptions.map((item) => (
             <option key={item}>{item}</option>
@@ -201,7 +201,7 @@ function Orders() {
         <select
           value={methodFilter}
           onChange={(e) => setMethodFilter(e.target.value)}
-          className="h-11 w-[150px] max-w-full rounded-lg border border-[var(--input-border)] bg-[var(--input-bg)] px-4 text-sm text-[var(--text)]"
+          className="h-11 w-[150px] max-w-full rounded-lg border focus:border-[var(--input-focus)] border-[var(--input-border)] bg-[var(--input-bg)] px-4 text-sm text-[var(--text)]"
         >
           {methodOptions.map((item) => (
             <option key={item}>{item}</option>
@@ -265,11 +265,9 @@ function Orders() {
                             {order.user.username.charAt(0).toUpperCase()}
                           </span>
                         ) : (
-                          <img
-                            src={defaultAvatar}
-                            alt="Default Avatar"
-                            className="h-full w-full object-cover"
-                          />
+                          <span className="font-semibold text-[var(--text-secondary)]">
+                            {'u'}
+                          </span>
                         )}
                       </div>
 
@@ -504,24 +502,21 @@ function Orders() {
                   </div>
                 </div>
                 <p className="mb-3 text-xs font-semibold tracking-[0.12em] text-[var(--text-muted)]">
-                    Items
-                  </p>
-                  {selectedOrder?.items.map((item) => {
-                    return (
-                      
-                      <div className=" mt-2 rounded-xl border border-[var(--border)] p-4">
-
-                         <ProductCard
+                  Items
+                </p>
+                {selectedOrder?.items.map((item) => {
+                  return (
+                    <div className=" mt-2 rounded-xl border border-[var(--border)] p-4">
+                      <ProductCard
                         name={item.name}
                         image={item.image}
                         subtitle={`${item.quantity} x ${item.price} EGP`}
                         price={`${item.price * item.quantity} EGP`}
                       />
-                      </div>
-                     
-                    );
-                  })}
-                
+                    </div>
+                  );
+                })}
+
                 <div className="mt-6">
                   <p className="mb-3 text-xs font-semibold tracking-[0.12em] text-[var(--text-muted)]">
                     UPDATE STATUS
