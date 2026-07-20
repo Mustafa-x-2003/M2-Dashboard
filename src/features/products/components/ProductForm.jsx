@@ -12,11 +12,11 @@ import StatusSection from "./AddProducts/StatusSection";
 import FormActions from "./AddProducts/FormActions";
 import useProductForm from "../hooks/useProductForm";
 
-export default function ProductForm(
-  { mode = "add",
+export default function ProductForm({
+  mode = "add",
   product = null,
-  onSubmit, }) {
-
+  onSubmit,
+}) {
   const navigate = useNavigate();
 
   const {
@@ -52,8 +52,10 @@ export default function ProductForm(
   });
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)} className="grid gap-8 xl:grid-cols-[0.95fr_1.05fr]">
-
+    <form
+      onSubmit={handleSubmit(handleFormSubmit)}
+      className="grid gap-8 xl:grid-cols-[0.95fr_1.05fr]"
+    >
       <GallerySection
         images={images}
         handleRemoveImage={handleRemoveImage}
@@ -62,18 +64,12 @@ export default function ProductForm(
         handleDrop={handleDrop}
         fileInputRef={fileInputRef}
       />
-      
-      
-      <section className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900 transition-colors duration-300">
-        
-        <div className="grid gap-5">
-        <ProductDetailsSection
-          register={register}
-        />
 
-          <CategorySection
-            register={register}
-          />
+      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-xl transition-colors duration-300">
+        <div className="grid gap-5">
+          <ProductDetailsSection register={register} />
+
+          <CategorySection register={register} />
 
           <TagsSection
             register={register}
@@ -83,7 +79,6 @@ export default function ProductForm(
             tags={tags}
             removeTag={removeTag}
           />
-         
 
           <StatusSection
             register={register}
@@ -91,7 +86,6 @@ export default function ProductForm(
             submitSuccess={submitSuccess}
             mode={mode}
           />
-
 
           <FormActions
             navigate={navigate}

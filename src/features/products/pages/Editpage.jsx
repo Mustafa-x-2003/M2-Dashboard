@@ -51,25 +51,11 @@ export default function Editpage() {
         <>
           <PageLoader text="Loading products..." />
 
-          <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-6 py-5 shadow-[var(--shadow)]">
-            <div className="mb-4 h-5 w-48 animate-pulse rounded-full bg-[var(--border)]"></div>
-            <div className="h-8 w-40 animate-pulse rounded-xl bg-[var(--border)]"></div>
-          </div>
+          
 
-          <div className="mb-6 grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <div
-                key={index}
-                className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-[var(--shadow)]"
-              >
-                <div className="mb-4 h-10 w-10 animate-pulse rounded-xl bg-[var(--border)]"></div>
-                <div className="mb-3 h-4 w-28 animate-pulse rounded-full bg-[var(--border)]"></div>
-                <div className="h-7 w-16 animate-pulse rounded-xl bg-[var(--border)]"></div>
-              </div>
-            ))}
-          </div>
+          
 
-          <div className="mb-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-4 py-3 shadow-[var(--shadow)]">
+          <div className="my-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] px-4 py-3 shadow-[var(--shadow)]">
             <div className="h-5 w-full animate-pulse rounded-full bg-[var(--border)]"></div>
           </div>
 

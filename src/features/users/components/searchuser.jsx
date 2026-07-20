@@ -10,7 +10,7 @@ function SearchUser({ searchTerm, setSearchTerm }) {
         placeholder="Search users..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full py-3 pl-12 pr-4 rounded-2xl border bg-[var(--surface-secondary)] border-[var(--input-border)] text-[var(--text)] placeholder:text-[var(--text-muted)] outline-none focus:ring-2 focus:ring-[var(--input-focus)] transition-colors duration-300"
+        className="w-full py-3 pl-12 pr-4 rounded-2xl border bg-[var(--surface-secondary)] border-[var(--input-border)] text-[var(--text)] placeholder:text-[var(--text-muted)] outline-none  focus:border-[var(--input-focus)] transition-colors duration-300"
       />
     </div>
   );

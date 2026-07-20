@@ -1,6 +1,6 @@
 export default function Settings() {
   return (
-    <div className="w-full p-4 sm:p-6 lg:p-8">
+    <div className="w-full p-4 sm:p-6">
       <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-8 shadow-[var(--shadow)] transition-colors duration-300">
         <p className="text-m  tracking-[0.35em] uppercase text-cyan-500">
           SETTINGS

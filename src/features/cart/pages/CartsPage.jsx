@@ -14,7 +14,7 @@ export default function CartsPage() {
 
   if (loading) {
     return (
-      <div className="w-full p-4 sm:p-6 lg:p-8">
+      <div className="w-full p-4 sm:p-6">
         <PageLoader text="Loading carts..." />
         <div className="mt-8 rounded-3xl border border-[var(--border)] bg-[var(--card)] p-8 shadow-[var(--shadow)]">
           <div className="mb-6 h-4 w-24 animate-pulse rounded-full bg-[var(--surface-secondary)]"></div>
@@ -31,7 +31,7 @@ export default function CartsPage() {
   }
 
   return (
-    <div className="w-full p-4 sm:p-6 lg:p-8">
+    <div className="w-full p-4 sm:p-6">
       <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-8 shadow-[var(--shadow)] transition-colors duration-300">
         <p className="text-m  uppercase tracking-[0.35em] text-cyan-500">
           CARTS
