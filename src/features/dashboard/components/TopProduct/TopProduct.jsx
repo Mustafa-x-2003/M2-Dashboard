@@ -14,7 +14,7 @@ const TopProduct = ({ dashboard }) => {
             {products.map((product) => (
                 <div
                     key={product._id}
-                    className="border border-red-100 bg-gray-100 rounded-2xl p-3 mb-3 shadow-sm"
+                    className="border border-[var(--border)] transition-colors duration-300 bg-[var(--background)] rounded-2xl p-3 mb-3 shadow-sm"
                 >
                     <ProductCard
                         image={product.image}

@@ -1,11 +1,76 @@
-import React from "react";
-import UserManager from '../components/usermanagement';
+import React, { useEffect, useState } from "react";
+import UserManager from "../components/usermanagement";
+import StatsGrid from "../components/statsgrid";
+import UsersTable from "../components/UsersTable";
+import PageLoader from "../../../components/ui/PageLoader";
+import { getUsers } from "../../users/services/usersApi";
+
 function Users() {
-  return (
-    <div className="w-full h-full p-10">
-      <UserManager />
-    </div>
-  );
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    try {
+      setIsLoading(true);
+      const data = await getUsers();
+      setUsers(data.users || []);
+      console.log(data.users);
+    } catch (error) {
+      // toast.error("Failed to load users");
+
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="w-full min-h-screen p-4 sm:p-6">
+        <PageLoader text="Loading users..." />
+
+        <div className="mt-8 rounded-3xl border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow)] overflow-hidden">
+          <div className="grid grid-cols-4 gap-4 bg-[var(--table-header)] px-6 py-5">
+            <div className="h-4 w-20 animate-pulse rounded-full bg-[var(--border)]"></div>
+            <div className="h-4 w-20 animate-pulse rounded-full bg-[var(--border)]"></div>
+            <div className="h-4 w-24 animate-pulse rounded-full bg-[var(--border)]"></div>
+            <div className="h-4 w-20 animate-pulse rounded-full bg-[var(--border)]"></div>
+          </div>
+
+          {Array.from({ length: 4 }).map((_, index) => (
+            <div
+              key={index}
+              className="grid grid-cols-4 gap-4 border-t border-[var(--border)] px-6 py-6"
+            >
+              <div className="h-5 w-40 animate-pulse rounded-full bg-[var(--border)]"></div>
+              <div className="h-5 w-24 animate-pulse rounded-full bg-[var(--border)]"></div>
+              <div className="h-5 w-28 animate-pulse rounded-full bg-[var(--border)]"></div>
+              <div className="h-5 w-32 animate-pulse rounded-full bg-[var(--border)]"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="w-full min-h-screen p-4 sm:p-6">
+        <UserManager searchTerm={searchTerm} setSearchTerm={setSearchTerm} getUsers={fetchUsers} />
+        <StatsGrid users={users} setUsers={setUsers} />
+        <UsersTable
+          searchTerm={searchTerm}
+          adta={""}
+          fetchUsers={fetchUsers}
+          users={users}
+          setUsers={setUsers}
+        />
+      </div>
+    );
+  }
 }
 
 export default Users;

@@ -1,12 +1,18 @@
 import { Navigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
+import SessionLoader from "../components/ui/SessionLoader";
 
-export default function ProtectedRoute({children}) {
+export default function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
 
-  if (loading) return <h2>Loading...</h2>;
-
-
+  if (loading) {
+    return (
+      <SessionLoader
+        title="Loading Session"
+        subtitle="Verifying authentication..."
+      />
+    );
+  }
 
   if (user === undefined) return null;
 

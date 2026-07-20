@@ -1,10 +1,12 @@
 import { AuthProvider } from "../../context/AuthContext";
-import { ThemeProvider } from "../../contexts/ThemeContext";
-
+import {ThemeProvider} from "../../context/ThemeContext";
+import { IsMenuOpenProvider } from "../../context/MenuContext";
 export default function Providers({ children }) {
   return (
+    <IsMenuOpenProvider>
     <ThemeProvider>
       <AuthProvider>{children}</AuthProvider>
     </ThemeProvider>
+    </IsMenuOpenProvider>
   );
 }

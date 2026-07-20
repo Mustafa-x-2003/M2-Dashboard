@@ -1,1 +1,215 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* =========================
+      BACKGROUND
+  ========================== */
+
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --surface-secondary: #f1f5f9;
+  --card: #ffffff;
+
+  /* =========================
+      TEXT
+  ========================== */
+
+  --text: #0f172a;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --text-darker: #475569;
+  --text-inverse: #ffffff;
+
+  /* =========================
+      BORDER
+  ========================== */
+
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+
+  /* =========================
+      PRIMARY
+  ========================== */
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #dbeafe;
+
+  /* =========================
+      STATUS
+  ========================== */
+
+  --success: #16a34a;
+  --success-light: #dcfce7;
+
+  --warning: #f59e0b;
+  --warning-light: #fef3c7;
+
+  --danger: #dc2626;
+  --danger-light: #fee2e2;
+
+  --info: #0ea5e9;
+  --info-light: #e0f2fe;
+
+  /* =========================
+      LAYOUT
+  ========================== */
+
+  --sidebar: #ffffff;
+  --navbar: #ffffff;
+  --sidebar-hover: #f1f5f9;
+  --sidebar-active: #dbeafe;
+
+  /* =========================
+      INPUT
+  ========================== */
+
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+  --input-focus: #2563eb;
+
+  /* =========================
+      BUTTON
+  ========================== */
+
+  --button-secondary: #f1f5f9;
+  --button-secondary-hover: #e2e8f0;
+
+  /* =========================
+      TABLE
+  ========================== */
+
+  --table-header: #f8fafc;
+  --table-hover: #f8fafc;
+  --table-striped: #f9fafb;
+
+  /* =========================
+      SHADOW
+  ========================== */
+
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.05);
+
+  /* =========================
+      OVERLAY
+  ========================== */
+
+  --overlay: rgba(15, 23, 42, 0.5);
+}
+
+/* ==================================================================== */
+
+.dark {
+  /* =========================
+      BACKGROUND
+  ========================== */
+
+  --background: #020617;
+  --surface: #0f172a;
+  --surface-secondary: #1e293b;
+  --card: #111827;
+
+  /* =========================
+      TEXT
+  ========================== */
+
+  --text: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-darker: #cbd5e1;
+  --text-inverse: #020617;
+
+  /* =========================
+      BORDER
+  ========================== */
+
+  --border: #334155;
+  --border-hover: #475569;
+
+  /* =========================
+      PRIMARY
+  ========================== */
+
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-light: rgba(59, 130, 246, 0.15);
+
+  /* =========================
+      STATUS
+  ========================== */
+
+  --success: #22c55e;
+  --success-light: rgba(34, 197, 94, 0.15);
+
+  --warning: #fbbf24;
+  --warning-light: rgba(251, 191, 36, 0.15);
+
+  --danger: #ef4444;
+  --danger-light: rgba(239, 68, 68, 0.15);
+
+  --info: #38bdf8;
+  --info-light: rgba(56, 189, 248, 0.15);
+
+  /* =========================
+      LAYOUT
+  ========================== */
+
+  --sidebar: #020617;
+  --navbar: #020617;
+  --sidebar-hover: #1e293b;
+  --sidebar-active: rgba(59, 130, 246, 0.18);
+
+  /* =========================
+      INPUT
+  ========================== */
+
+  --input-bg: #0f172a;
+  --input-border: #334155;
+  --input-focus: #60a5fa;
+
+  /* =========================
+      BUTTON
+  ========================== */
+
+  --button-secondary: #1e293b;
+  --button-secondary-hover: #334155;
+
+  /* =========================
+      TABLE
+  ========================== */
+
+  --table-header: #0f172a;
+  --table-hover: #1e293b;
+  --table-striped: #111827;
+
+  /* =========================
+      SHADOW
+  ========================== */
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 16px rgba(0, 0, 0, 0.45);
+
+  /* =========================
+      OVERLAY
+  ========================== */
+
+  --overlay: rgba(0, 0, 0, 0.65);
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ===============================
+          CUSTOM UTILITIES
+================================ */
+
+
