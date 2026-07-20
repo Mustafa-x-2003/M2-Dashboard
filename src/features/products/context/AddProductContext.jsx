@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { addProductReducer, INITIAL_STATE } from './addProductReducer';
 import { createProduct } from '../services/productsApi';
+import { useNavigate } from 'react-router';
 
 const AddProductContext = createContext();
 
 export const AddProductProvider = ({ children }) => {
+  const navigate = useNavigate()
   const [state, dispatch] = useReducer(addProductReducer, INITIAL_STATE);
 
   const submitProduct = async (fields) => {
@@ -21,6 +23,7 @@ export const AddProductProvider = ({ children }) => {
       console.log("IMAGES", fields.images);
       console.log("TAGS", fields.tags);
       await createProduct(fields, fields.tags, fields.images);
+      navigate("/products");
       dispatch({ type: 'SET_SUCCESS', payload: true });
       return { success: true };
     } catch (err) {

@@ -3,7 +3,7 @@ import AddUserForm from "./adduser";
 import SearchUser from "./searchuser";
 import { FaUserPlus, FaChevronDown } from "react-icons/fa";
 
-const UserManager = ({ searchTerm, setSearchTerm }) => {
+const UserManager = ({ searchTerm, setSearchTerm , getUsers }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
@@ -46,7 +46,7 @@ const UserManager = ({ searchTerm, setSearchTerm }) => {
         }`}
       >
         <div className="overflow-hidden">
-          <AddUserForm onClose={() => setIsFormOpen(false)} />
+          <AddUserForm onClose={() => setIsFormOpen(false)} getUsers={getUsers} />
         </div>
       </div>
     </div>

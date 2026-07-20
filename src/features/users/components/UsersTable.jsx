@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import {
-  updateUser,
-  toggleUserRole,
-  deleteUser,
-} from "../services/usersApi";
+import { updateUser, toggleUserRole, deleteUser } from "../services/usersApi";
 import { FiEdit2, FiShield, FiTrash2 } from "react-icons/fi";
 import toast from "react-hot-toast";
 import EditUserModal from "./EditUserModal";
+import DeleteUserModal from "./DeletUserModal";
 
 function UsersTable({
   searchTerm,
@@ -19,6 +16,7 @@ function UsersTable({
 }) {
   const [selectedUser, setSelectedUser] = useState(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const handleSave = async (updatedData) => {
     await updateUser(selectedUser._id, updatedData);
@@ -61,16 +59,11 @@ function UsersTable({
   };
 
   const handleDeleteUser = async (userId) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this user?",
-    );
-
-    if (!confirmDelete) return;
-
     try {
+      setIsDeleteOpen(false);
       await deleteUser(userId);
-
       setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userId));
+      await fetchUsers();
     } catch (error) {
       console.log(error);
     }
@@ -248,7 +241,7 @@ function UsersTable({
                     <div className="flex gap-3">
                       <button
                         onClick={() => {
-                          setSelectedUser(user);
+                          setSelectedUser((pre) => user);
                           setIsEditOpen(true);
                         }}
                         className={actionButtonClass}
@@ -288,7 +281,10 @@ function UsersTable({
                         <FiShield className="text-sm sm:text-base md:text-lg" />
                       </button>
                       <button
-                        onClick={() => handleDeleteUser(user._id)}
+                        onClick={() => {
+                          setSelectedUser((pre) => user);
+                          setIsDeleteOpen(true);
+                        }}
                         className={actionButtonClass}
                         style={{
                           background: "var(--danger-light)",
@@ -332,6 +328,16 @@ function UsersTable({
         isOpen={isEditOpen}
         onClose={() => setIsEditOpen(false)}
         onSave={handleSave}
+      />
+      {/* isOpen, onClose, onConfirm, user */}
+      <DeleteUserModal
+        Modal
+        user={selectedUser}
+        onConfirm={() => {
+          handleDeleteUser(selectedUser?._id);
+        }}
+        isOpen={isDeleteOpen}
+        onClose={() => setIsDeleteOpen(false)}
       />
     </div>
   );

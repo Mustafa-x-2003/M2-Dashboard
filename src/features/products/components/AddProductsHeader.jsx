@@ -11,7 +11,7 @@ export default function AddProductsHeader({
   const navigate = useNavigate();
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-xl dark:shadow-2xl transition-colors duration-300">
+    <div className="relative  mb-8 overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-xl dark:shadow-2xl transition-colors duration-300">
       <div className="absolute -right-14 -top-14 h-44 w-44 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 h-44 w-44 rounded-full bg-violet-500/15 blur-3xl pointer-events-none"></div>
 

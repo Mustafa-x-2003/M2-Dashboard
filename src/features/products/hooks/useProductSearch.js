@@ -70,7 +70,7 @@ export function useProductSearch() {
       clearTimeout(timer);
       controller.abort();
     };
-  }, [query, cat, refreshKey, search]);
+  }, [ cat, refreshKey, search]);
 
   const refresh = () => setRefreshKey((prev) => prev + 1);
 

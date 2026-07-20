@@ -11,7 +11,7 @@ export default function GallerySection({
     fileInputRef,
 }) {
     return (
-        <section className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900 transition-colors duration-300">
+      <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-xl transition-colors duration-300">
             <div className="flex items-center gap-3">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400">
                     <MdOutlineAddPhotoAlternate size={24} />

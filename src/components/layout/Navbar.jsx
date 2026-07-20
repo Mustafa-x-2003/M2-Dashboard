@@ -88,7 +88,7 @@ function Navbar() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0  lg:left-72 z-1000 right-0 ">
+    <div className="fixed top-0 left-0   lg:left-72 z-1000 right-0 ">
       <div className="h-20 bg-[var(--navbar)] transition-all duration-300 border-b border-[var(--border)] flex justify-between px-5  h-[80px] items-center">
         <h1 className=" hidden lg:block  text-2xl sm:text-3xl md:text-4xl font-bold text-[var(--text)]">
           <ProductCard name={"M2-Dashboard"} image={Logo} />
